@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Hub - چت هاب</title>
+    <title>چت هاب | دانلود و نصب برنامه</title>
     <style>
         * {
             margin: 0;
@@ -16,137 +16,165 @@
             color: #ffffff;
             direction: rtl;
             line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #1a2332;
+            border-radius: 20px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+            max-width: 450px; 
+            width: 100%;
+            padding: 25px;
         }
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background-color: #1a2332;
-        }
-        .header-icons {
-            display: flex;
-            gap: 15px;
-        }
-        .container {
-            padding: 20px;
+            margin-bottom: 20px;
         }
         .app-info {
             display: flex;
             align-items: center;
             gap: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
         .app-icon {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             background: linear-gradient(135deg, #1e88e5, #1565c0);
-            border-radius: 20px;
+            border-radius: 22px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 35px;
+            font-size: 40px;
+        }
+        .app-title h2 {
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+        .app-title p {
+            color: #8899a6;
+            font-size: 14px;
         }
         .stats {
             display: flex;
             justify-content: space-around;
-            background-color: #1a2332;
+            background-color: #12181f;
             padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
         }
         .stat-item {
             text-align: center;
+            font-size: 13px;
+            color: #8899a6;
         }
         .stat-value {
             font-weight: bold;
             color: #42a5f5;
+            font-size: 16px;
+            margin-top: 5px;
         }
         .install-btn {
             display: block;
             width: 100%;
             background-color: #42a5f5;
             color: white;
-            padding: 15px;
-            border: none;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px;
             border-radius: 25px;
             font-size: 18px;
             font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 30px;
+            transition: background 0.3s;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4);
+        }
+        .install-btn:hover {
+            background-color: #1e88e5;
         }
         .screenshots {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             overflow-x: auto;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
         }
         .screenshot-item {
-            min-width: 150px;
-            height: 250px;
+            min-width: 140px;
+            height: 230px;
             background-color: #2a394a;
-            border-radius: 10px;
+            border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 10px;
+            font-size: 12px;
+            color: #8899a6;
+            border: 1px solid #3d4f66;
         }
         .description {
-            margin-top: 30px;
-            background-color: #1a2332;
+            background-color: #12181f;
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
+        }
+        .description h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #42a5f5;
+        }
+        .description p {
+            color: #b0bec5;
+            font-size: 13px;
+            text-align: justify;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div>←</div>
-    <div class="header-icons">
-        <span>🔍</span>
-        <span>⋮</span>
-    </div>
-</header>
-
 <div class="container">
     <div class="app-info">
-        <div class="app-icon">❤️</div>
-        <div>
+        <div class="app-icon">💬</div>
+        <div class="app-title">
             <h2>چت هاب | گپ و گفتگو</h2>
-            <p style="color: #8899a6;">شبکه‌های اجتماعی</p>
+            <p>برنامه موبایل (اندروید)</p>
         </div>
     </div>
 
     <div class="stats">
         <div class="stat-item">
-            <div>نصب</div>
-            <div class="stat-value">۵۰ هزار</div>
+            <div>نصب فعال</div>
+            <div class="stat-value">۵۰ هزار+</div>
         </div>
         <div class="stat-item">
-            <div>امتیاز</div>
+            <div>امتیاز کاربران</div>
             <div class="stat-value">۴.۶ ★</div>
         </div>
         <div class="stat-item">
-            <div>حجم</div>
+            <div>حجم فایل</div>
             <div class="stat-value">۱۱ مگابایت</div>
         </div>
     </div>
 
-    <button class="install-btn">نصب</button>
+    <a href="app.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
 
     <div class="screenshots">
-        <div class="screenshot-item">پیش‌نمایش ۱</div>
-        <div class="screenshot-item">پیش‌نمایش ۲</div>
-        <div class="screenshot-item">پیش‌نمایش ۳</div>
-        <div class="screenshot-item">پیش‌نمایش ۴</div>
+        <div class="screenshot-item">📸 دوستای جدید پیدا کن!</div>
+        <div class="screenshot-item">📸 پروفایل اختصاصی</div>
+        <div class="screenshot-item">📸 فضای امن و صمیمی</div>
+        <div class="screenshot-item">📸 گفتگو با سرعت بالا</div>
     </div>
 
     <div class="description">
-        <h3>توضیحات</h3>
-        <p style="color: #8899a6; font-size: 14px; margin-top: 10px;">
-            چت هاب | مرکز گفت‌وگوهای سالم، سریع و صمیمی. به چت هاب خوش آمدید! اینجا هاب گفتگوهای فارسی‌زبان‌هاست. یه فضای پویا، شاد و امن برای حرف زدن، آشنا شدن و خوش‌گذرونی بدون دغدغه. بدون شماره، بدون ایمیل، فقط چند ثانیه و وارد...
+        <h3>توضیحات برنامه</h3>
+        <p>
+            چت هاب مرکز گفت‌وگوهای سریع، جذاب و صمیمی است. به هاب گفتگوهای فارسی‌زبانان خوش آمدید! فضایی پویا و شاد برای پیدا کردن هم‌صحبت و دوستان جدید بدون نیاز به ثبت‌نام‌های پیچیده. همین حالا برنامه را نصب کنید و آنلاین چت کنید.
         </p>
     </div>
 </div>

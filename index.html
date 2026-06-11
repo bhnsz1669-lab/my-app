@@ -39,12 +39,17 @@
         .app-icon {
             width: 85px;
             height: 85px;
-            background: linear-gradient(135deg, #ff4081, #e91e63);
             border-radius: 22px;
+            overflow: hidden; /* برای اینکه لبه‌های عکس هم مثل کادر گرد شود */
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .app-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* هماهنگ کردن اندازه عکس با کادر آیکون */
         }
         .app-title h2 {
             font-size: 20px;
@@ -95,14 +100,12 @@
         .screenshots {
             display: flex;
             gap: 12px;
-            /* حذف overflow افقی چون فقط دو عکس است */
-            justify-content: center; /* وسط‌چین کردن عکس‌ها */
+            justify-content: center; 
             margin-bottom: 25px;
         }
         .screenshot-item {
-            /* تنظیم پهنا برای نمایش دو عکس در کنار هم */
             width: calc(50% - 6px); 
-            height: 250px; /* کمی بلندتر برای زیبایی */
+            height: 250px; 
             background-color: #2a394a;
             border-radius: 12px;
             display: flex;
@@ -114,7 +117,7 @@
         .screenshot-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* حفظ تناسب تصویر */
+            object-fit: cover; 
         }
         .description {
             background-color: #12181f;
@@ -137,7 +140,9 @@
 
 <div class="container">
     <div class="app-info">
-        <div class="app-icon">💖</div>
+        <div class="app-icon">
+            <img src="logo.png" alt="آیکون برنامه">
+        </div>
         <div class="app-title">
             <h2>دوستیابی و چت آنلاین</h2>
             <p>نسخه اندروید (.apk)</p>
@@ -159,14 +164,14 @@
         </div>
     </div>
 
-    <a href="dost.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
+    <a href="app.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
 
     <div class="screenshots">
         <div class="screenshot-item">
-            <img src="pic1.jpg" alt="پیش‌نمایش ۱ محیط برنامه">
+            <img src="pic1.jpg" alt="پیش‌نمایش ۱">
         </div>
         <div class="screenshot-item">
-            <img src="pic2.jpg" alt="پیش‌نمایش ۲ محیط برنامه">
+            <img src="pic2.jpg" alt="پیش‌نمایش ۲">
         </div>
     </div>
 

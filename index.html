@@ -40,7 +40,7 @@
             width: 85px;
             height: 85px;
             border-radius: 22px;
-            overflow: hidden; /* برای اینکه لبه‌های عکس هم مثل کادر گرد شود */
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -49,7 +49,7 @@
         .app-icon img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* هماهنگ کردن اندازه عکس با کادر آیکون */
+            object-fit: cover; 
         }
         .app-title h2 {
             font-size: 20px;
@@ -123,6 +123,7 @@
             background-color: #12181f;
             padding: 15px;
             border-radius: 12px;
+            margin-bottom: 25px;
         }
         .description h3 {
             font-size: 16px;
@@ -133,6 +134,153 @@
             color: #b0bec5;
             font-size: 13px;
             text-align: justify;
+        }
+
+        /* --- بخش جدید: نظرات و امتیازها طبق اسکرین‌شات --- */
+        .comments-section {
+            background-color: #12181f;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .comments-header h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .more-link {
+            color: #42a5f5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #2a394a;
+            padding-bottom: 15px;
+        }
+        .rating-big-number {
+            text-align: center;
+            min-width: 100px;
+        }
+        .rating-big-number h1 {
+            font-size: 48px;
+            color: #ffffff;
+            line-height: 1;
+        }
+        .stars-blue {
+            color: #42a5f5;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .rating-count {
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .rating-bars {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-right: 15px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .bar-bg {
+            background-color: #2a394a;
+            height: 6px;
+            flex-grow: 1;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            background-color: #546e7a;
+            height: 100%;
+            border-radius: 3px;
+        }
+        .comment-card {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #2a394a;
+            padding-bottom: 15px;
+        }
+        .comment-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .user-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #2a394a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            overflow: hidden;
+        }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .user-name {
+            font-size: 14px;
+            color: #ffffff;
+        }
+        .comment-meta {
+            text-align: left;
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .comment-text {
+            font-size: 13px;
+            color: #e0e0e0;
+            text-align: justify;
+            margin-bottom: 12px;
+            padding-right: 2px;
+        }
+        .comment-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            font-size: 13px;
+            color: #8899a6;
+            align-items: center;
+        }
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-dots {
+            color: #8899a6;
+            cursor: pointer;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -164,7 +312,7 @@
         </div>
     </div>
 
-    <a href="doat.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
+    <a href="app.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
 
     <div class="screenshots">
         <div class="screenshot-item">
@@ -180,6 +328,115 @@
         <p>
             به دنیای جذاب دوستیابی و چت خوش آمدید! با این اپلیکیشن می‌تونی به سادگی و در محیطی امن، دوست‌های جدیدی پیدا کنی، با هم گپ بزنید و لحظات خوشی را بسازید. فضایی پویا و شاد برای آشنایی‌های تازه. همین حالا برنامه رو نصب کن و به جمع هزاران کاربر ما بپیوند.
         </p>
+    </div>
+
+    <div class="comments-section">
+        <div class="comments-header">
+            <h3>نظرات و امتیازها</h3>
+            <a href="#" class="more-link">بیشتر 〉</a>
+        </div>
+
+        <div class="rating-summary">
+            <div class="rating-big-number">
+                <h1>۴٫۶</h1>
+                <div class="stars-blue">★★★★★</div>
+                <div class="rating-count">۲,۰۷۶ نفر</div>
+            </div>
+            
+            <div class="rating-bars">
+                <div class="bar-item">
+                    <span>۵</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
+                </div>
+                <div class="bar-item">
+                    <span>۴</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 8%;"></div></div>
+                </div>
+                <div class="bar-item">
+                    <span>۳</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 5%;"></div></div>
+                </div>
+                <div class="bar-item">
+                    <span>۲</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 3%;"></div></div>
+                </div>
+                <div class="bar-item">
+                    <span>۱</span>
+                    <div class="bar-bg"><div class="bar-fill" style="width: 9%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comment-card">
+            <div class="user-info-row">
+                <div class="user-profile">
+                    <div class="user-avatar" style="background-color: #223142;">👤</div>
+                    <div>
+                        <div class="user-name">Navid</div>
+                        <div class="stars-blue">★★★★★</div>
+                    </div>
+                </div>
+                <div class="comment-meta">
+                    <span class="menu-dots">⋮</span>
+                    <div style="margin-top: 5px;">۴ خرداد ۱۴۰۵</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰😊
+            </div>
+            <div class="comment-actions">
+                <div class="action-item">👍 <span>۴۳</span></div>
+                <div class="action-item">👎 <span>۵۶</span></div>
+            </div>
+        </div>
+
+        <div class="comment-card">
+            <div class="user-info-row">
+                <div class="user-profile">
+                    <div class="user-avatar" style="background-color: #ff9800;">🐱</div>
+                    <div>
+                        <div class="user-name">مایکل جکسون</div>
+                        <div class="stars-blue">★★★★★</div>
+                    </div>
+                </div>
+                <div class="comment-meta">
+                    <span class="menu-dots">⋮</span>
+                    <div style="margin-top: 5px;">۳ روز پیش</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه <br>
+                <span style="color: #42a5f5; font-size: 12px; cursor: pointer;">ویژگی های خوبی دارد بیشتر</span>
+            </div>
+            <div class="comment-actions">
+                <div class="action-item">👍 <span>۳</span></div>
+                <div class="action-item">👎 <span>۴</span></div>
+            </div>
+        </div>
+
+        <div class="comment-card">
+            <div class="user-info-row">
+                <div class="user-profile">
+                    <div class="user-avatar" style="background-color: #ec407a;">A</div>
+                    <div>
+                        <div class="user-name">ali9504</div>
+                        <div class="stars-blue">★★★★★</div>
+                    </div>
+                </div>
+                <div class="comment-meta">
+                    <span class="menu-dots">⋮</span>
+                    <div style="margin-top: 5px;">۱۱ خرداد ۱۴۰۵</div>
+                </div>
+            </div>
+            <div class="comment-text">
+                برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید
+            </div>
+            <div class="comment-actions">
+                <div class="action-item">👍 <span>۱۵</span></div>
+                <div class="action-item">👎 <span>۶</span></div>
+            </div>
+        </div>
+
     </div>
 </div>
 

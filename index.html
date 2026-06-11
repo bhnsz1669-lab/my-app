@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>چت هاب | دانلود و نصب برنامه</title>
+    <title>دوستیابی و چت | دانلود برنامه</title>
     <style>
         * {
             margin: 0;
@@ -30,12 +30,6 @@
             width: 100%;
             padding: 25px;
         }
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
         .app-info {
             display: flex;
             align-items: center;
@@ -45,7 +39,7 @@
         .app-icon {
             width: 85px;
             height: 85px;
-            background: linear-gradient(135deg, #1e88e5, #1565c0);
+            background: linear-gradient(135deg, #ff4081, #e91e63);
             border-radius: 22px;
             display: flex;
             justify-content: center;
@@ -76,14 +70,14 @@
         }
         .stat-value {
             font-weight: bold;
-            color: #42a5f5;
+            color: #ff4081;
             font-size: 16px;
             margin-top: 5px;
         }
         .install-btn {
             display: block;
             width: 100%;
-            background-color: #42a5f5;
+            background-color: #ff4081;
             color: white;
             text-decoration: none;
             text-align: center;
@@ -93,31 +87,34 @@
             font-weight: bold;
             transition: background 0.3s;
             margin-bottom: 25px;
-            box-shadow: 0 4px 15px rgba(66, 165, 245, 0.4);
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
         }
         .install-btn:hover {
-            background-color: #1e88e5;
+            background-color: #d81b60;
         }
         .screenshots {
             display: flex;
             gap: 12px;
-            overflow-x: auto;
-            padding-bottom: 10px;
+            /* حذف overflow افقی چون فقط دو عکس است */
+            justify-content: center; /* وسط‌چین کردن عکس‌ها */
             margin-bottom: 25px;
         }
         .screenshot-item {
-            min-width: 140px;
-            height: 230px;
+            /* تنظیم پهنا برای نمایش دو عکس در کنار هم */
+            width: calc(50% - 6px); 
+            height: 250px; /* کمی بلندتر برای زیبایی */
             background-color: #2a394a;
             border-radius: 12px;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 10px;
-            font-size: 12px;
-            color: #8899a6;
             border: 1px solid #3d4f66;
+            overflow: hidden;
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* حفظ تناسب تصویر */
         }
         .description {
             background-color: #12181f;
@@ -127,7 +124,7 @@
         .description h3 {
             font-size: 16px;
             margin-bottom: 8px;
-            color: #42a5f5;
+            color: #ff4081;
         }
         .description p {
             color: #b0bec5;
@@ -140,10 +137,10 @@
 
 <div class="container">
     <div class="app-info">
-        <div class="app-icon">💬</div>
+        <div class="app-icon">💖</div>
         <div class="app-title">
-            <h2>چت هاب | گپ و گفتگو</h2>
-            <p>برنامه موبایل (اندروید)</p>
+            <h2>دوستیابی و چت آنلاین</h2>
+            <p>نسخه اندروید (.apk)</p>
         </div>
     </div>
 
@@ -153,7 +150,7 @@
             <div class="stat-value">۵۰ هزار+</div>
         </div>
         <div class="stat-item">
-            <div>امتیاز کاربران</div>
+            <div>امتیاز</div>
             <div class="stat-value">۴.۶ ★</div>
         </div>
         <div class="stat-item">
@@ -165,16 +162,18 @@
     <a href="dost.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
 
     <div class="screenshots">
-        <div class="screenshot-item">📸 دوستای جدید پیدا کن!</div>
-        <div class="screenshot-item">📸 پروفایل اختصاصی</div>
-        <div class="screenshot-item">📸 فضای امن و صمیمی</div>
-        <div class="screenshot-item">📸 گفتگو با سرعت بالا</div>
+        <div class="screenshot-item">
+            <img src="pic1.jpg" alt="پیش‌نمایش ۱ محیط برنامه">
+        </div>
+        <div class="screenshot-item">
+            <img src="pic2.jpg" alt="پیش‌نمایش ۲ محیط برنامه">
+        </div>
     </div>
 
     <div class="description">
-        <h3>توضیحات برنامه</h3>
+        <h3>درباره برنامه</h3>
         <p>
-            چت هاب مرکز گفت‌وگوهای سریع، جذاب و صمیمی است. به هاب گفتگوهای فارسی‌زبانان خوش آمدید! فضایی پویا و شاد برای پیدا کردن هم‌صحبت و دوستان جدید بدون نیاز به ثبت‌نام‌های پیچیده. همین حالا برنامه را نصب کنید و آنلاین چت کنید.
+            به دنیای جذاب دوستیابی و چت خوش آمدید! با این اپلیکیشن می‌تونی به سادگی و در محیطی امن، دوست‌های جدیدی پیدا کنی، با هم گپ بزنید و لحظات خوشی را بسازید. فضایی پویا و شاد برای آشنایی‌های تازه. همین حالا برنامه رو نصب کن و به جمع هزاران کاربر ما بپیوند.
         </p>
     </div>
 </div>

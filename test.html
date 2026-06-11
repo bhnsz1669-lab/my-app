@@ -1,57 +1,100 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود برنامه</title>
-    <style>
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            background-color: #f4f6f9;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 400px; 
-            width: 100%;
-            padding: 25px;
-            text-align: center;
-        }
-        .download-btn {
-            display: inline-block;
-            background-color: #28a745;
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 50px;
-            width: 80%;
-            transition: background 0.3s;
-        }
-        .download-btn:hover {
-            background-color: #218838;
-        }
-    </style>
-</head>
-<body>
+import 'package:flutter/material.dart';
 
-<div class="container">
-    <!-- 
-        ⚠️ دقت کن: 
-        1. اول فایل APK خودت رو در گیت‌هاب آپلود کن.
-        2. بعد، اسم دقیق فایل APK رو در عبارت "dost.apk" بنویس.
-        مثال: اگر اسم فایلت download.apk هست، بنویس: src="download.apk"
-     -->
-    <a href="dost.apk" class="download-btn">📥 دانلود و نصب مستقیم برنامه</a>
-</div>
+class AppDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white, // تم اصلی مارکت‌ها معمولاً سفید است
+      appBar: AppBar(backgroundColor: Colors.white, elevation: 0, iconTheme: IconThemeData(color: Colors.black)),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // بخش هدر (آیکون و اطلاعات اصلی)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.network('آدرس_آیکون_شما', width: 80, height: 80),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("چت هاب", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                        Text("Chat Hub", style: TextStyle(color: Colors.grey)),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            
+            // بخش آمار (با تفکیک‌کننده)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  _statItem("۴.۶", "ستاره"),
+                  _statItem("۱۱ MB", "حجم"),
+                  _statItem("۵۰K+", "نصب"),
+                ],
+              ),
+            ),
 
-</body>
-</html>
+            // دکمه نصب سبز رنگ (مشابه اکثر مارکت‌ها)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green[600],
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))
+                  ),
+                  onPressed: () {},
+                  child: Text("نصب", style: TextStyle(color: Colors.white, fontSize: 16)),
+                ),
+              ),
+            ),
+
+            // اسکرین‌شات‌ها (ارتفاع کمتر، ظاهری شبیه موبایل)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Container(
+                height: 200,
+                child: ListView.separated(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 3,
+                  separatorBuilder: (_, __) => SizedBox(width: 12),
+                  itemBuilder: (_, index) => Container(
+                    width: 110,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _statItem(String value, String label) {
+    return Column(
+      children: [
+        Text(value, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+        Text(label, style: TextStyle(color: Colors.grey, fontSize: 12)),
+      ],
+    );
+  }
+}

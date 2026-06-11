@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>راهنمای نصب و دانلود برنامه</title>
+    <title>دانلود برنامه</title>
     <style>
         body {
             font-family: Tahoma, Arial, sans-serif;
@@ -23,26 +23,6 @@
             width: 100%;
             padding: 25px;
             text-align: center;
-        }
-        h2 { color: #333; font-size: 20px; margin-bottom: 10px; }
-        p { color: #666; font-size: 14px; margin-bottom: 20px; }
-        
-        .video-box {
-            position: relative;
-            padding-bottom: 177.7%; /* نسبت 9:16 برای ویدیوهای عمودی موبایل */
-            height: 0;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #000;
-            margin-bottom: 25px;
-        }
-        .video-box video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain; 
         }
         .download-btn {
             display: inline-block;
@@ -64,24 +44,10 @@
 <body>
 
 <div class="container">
-    <h2>فیلم آموزشی را ببینید و برنامه را نصب کنید</h2>
-    <p>لطفاً ابتدا ویدیوی آموزشی زیر را تا انتها تماشا کنید، سپس اقدام به دانلود و نصب برنامه نمایید.</p>
-    
-    <div class="video-box">
-        <video controls playsinline>
-            <!-- 
-                 ⚠️ دقت کن: اگر اسم ویدیوی خودت در گیت‌هاب چیز دیگری است، 
-                 جای عبارت video.mp4، دقیقاً همان نام را بنویس 
-            -->
-            <source src="video.mp4" type="video/mp4">
-            مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
-        </video>
-    </div>
-
     <!-- 
         ⚠️ دقت کن: 
         1. اول فایل APK خودت رو در گیت‌هاب آپلود کن.
-        2. بعد، اسم دقیق فایل APK رو در عبارت "apk_file_name.apk" بنویس.
+        2. بعد، اسم دقیق فایل APK رو در عبارت "dost.apk" بنویس.
         مثال: اگر اسم فایلت download.apk هست، بنویس: src="download.apk"
      -->
     <a href="dost.apk" class="download-btn">📥 دانلود و نصب مستقیم برنامه</a>

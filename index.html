@@ -206,15 +206,8 @@
             font-size: 13px;
             padding: 4px 0;
         }
-        .av-name {
-            color: #b0bec5;
-        }
-        .av-status {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-weight: bold;
-        }
+        .av-name { color: #b0bec5; }
+        .av-status { display: flex; align-items: center; gap: 6px; font-weight: bold; }
         .status-clean { color: #00e676; }
         .status-scanning { color: #ffb300; }
         .status-info { color: #90a4ae; }
@@ -229,445 +222,241 @@
             border-radius: 8px;
         }
 
-        .screenshots {
-            display: flex;
-            gap: 12px;
-            justify-content: center; 
-            margin-bottom: 25px;
-        }
-        .screenshot-item {
-            width: calc(50% - 6px); 
-            height: 250px; 
-            background-color: #2a394a;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid #3d4f66;
-            overflow: hidden;
-        }
-        .screenshot-item img {
+        .screenshots { display: flex; gap: 12px; justify-content: center; margin-bottom: 25px; }
+        .screenshot-item { width: calc(50% - 6px); height: 250px; background-color: #2a394a; border-radius: 12px; display: flex; justify-content: center; align-items: center; border: 1px solid #3d4f66; overflow: hidden; }
+        .screenshot-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .description { background-color: #12181f; padding: 15px; border-radius: 12px; margin-bottom: 25px; }
+        .description h3 { font-size: 16px; margin-bottom: 8px; color: #42a5f5; }
+        .description p { color: #b0bec5; font-size: 13px; text-align: justify; }
+
+        /* بخش نظرات اصلی */
+        .comments-section { background-color: #12181f; border-radius: 12px; padding: 15px; }
+        .comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .comments-header h3 { font-size: 16px; color: #ffffff; }
+        .more-link { color: #42a5f5; text-decoration: none; font-size: 14px; cursor: pointer; user-select: none; }
+        
+        .rating-summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #2a394a; padding-bottom: 15px; }
+        .rating-big-number { text-align: center; min-width: 100px; }
+        .rating-big-number h1 { font-size: 48px; color: #ffffff; line-height: 1; }
+        .stars-blue { color: #42a5f5; font-size: 14px; margin: 5px 0; }
+        .rating-count { font-size: 12px; color: #8899a6; }
+        .rating-bars { flex-grow: 1; display: flex; flex-direction: column; gap: 4px; padding-right: 15px; }
+        .bar-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #8899a6; }
+        .bar-bg { background-color: #2a394a; height: 6px; flex-grow: 1; border-radius: 3px; overflow: hidden; }
+        .bar-fill { background-color: #546e7a; height: 100%; border-radius: 3px; }
+        
+        .comment-card { margin-bottom: 25px; border-bottom: 1px solid #2a394a; padding-bottom: 15px; }
+        .comment-card:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .user-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .user-profile { display: flex; align-items: center; gap: 10px; }
+        .user-avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #2a394a; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #42a5f5; font-size: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .user-name { font-size: 14px; color: #ffffff; }
+        .comment-meta { text-align: left; font-size: 12px; color: #8899a6; }
+        .comment-text { font-size: 13px; color: #e0e0e0; text-align: justify; margin-bottom: 12px; padding-right: 2px; }
+        .comment-actions { display: flex; justify-content: flex-end; gap: 15px; font-size: 13px; color: #8899a6; align-items: center; }
+        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; }
+        .menu-dots { color: #8899a6; cursor: pointer; font-size: 16px; }
+
+        /* 👑 صفحه تمام‌صفحه جدید برای نمایش اختصاصی ۵۰ نظر 👑 */
+        .all-comments-page {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; 
-        }
-        .description {
-            background-color: #12181f;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-        }
-        .description h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #42a5f5;
-        }
-        .description p {
-            color: #b0bec5;
-            font-size: 13px;
-            text-align: justify;
-        }
-
-        .comments-section {
-            background-color: #12181f;
-            border-radius: 12px;
-            padding: 15px;
-        }
-        .comments-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        .comments-header h3 {
-            font-size: 16px;
-            color: #ffffff;
-        }
-        .more-link {
-            color: #42a5f5;
-            text-decoration: none;
-            font-size: 14px;
-            cursor: pointer;
-            user-select: none;
-        }
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 25px;
-            border-bottom: 1px solid #2a394a;
-            padding-bottom: 15px;
-        }
-        .rating-big-number {
-            text-align: center;
-            min-width: 100px;
-        }
-        .rating-big-number h1 {
-            font-size: 48px;
-            color: #ffffff;
-            line-height: 1;
-        }
-        .stars-blue {
-            color: #42a5f5;
-            font-size: 14px;
-            margin: 5px 0;
-        }
-        .rating-count {
-            font-size: 12px;
-            color: #8899a6;
-        }
-        .rating-bars {
-            flex-grow: 1;
-            display: flex;
+            background-color: #1a2332;
+            border-radius: 20px;
+            padding: 25px;
+            z-index: 100;
+            display: none; /* در حالت عادی مخفی است */
             flex-direction: column;
-            gap: 4px;
-            padding-right: 15px;
         }
-        .bar-item {
+        .all-comments-page.show {
+            display: flex;
+        }
+        .comments-page-header {
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 12px;
-            color: #8899a6;
-        }
-        .bar-bg {
-            background-color: #2a394a;
-            height: 6px;
-            flex-grow: 1;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-        .bar-fill {
-            background-color: #546e7a;
-            height: 100%;
-            border-radius: 3px;
-        }
-        .comment-card {
-            margin-bottom: 25px;
+            gap: 15px;
             border-bottom: 1px solid #2a394a;
             padding-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .comment-card:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0;
-        }
-        .user-info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 8px;
-        }
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: #2a394a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
+        .back-btn {
+            background: none;
+            border: none;
             color: #42a5f5;
-            font-size: 16px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 22px;
+            cursor: pointer;
+            outline: none;
+            padding: 0 5px;
         }
-        .user-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .user-name {
-            font-size: 14px;
+        .comments-page-title {
+            font-size: 18px;
             color: #ffffff;
+            font-weight: bold;
         }
-        .comment-meta {
-            text-align: left;
-            font-size: 12px;
-            color: #8899a6;
+        .comments-scroll-area {
+            flex-grow: 1;
+            overflow-y: auto; /* اسکرول داخلی فقط برای نظرات */
+            padding-left: 5px;
         }
-        .comment-text {
-            font-size: 13px;
-            color: #e0e0e0;
-            text-align: justify;
-            margin-bottom: 12px;
-            padding-right: 2px;
-        }
-        .comment-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-            font-size: 13px;
-            color: #8899a6;
-            align-items: center;
-        }
-        .action-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-        .menu-dots {
-            color: #8899a6;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        /* محفظه مخفی برای ۵۰ نظر بیشتر */
-        .more-comments-container {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease-in-out;
-        }
-        .more-comments-container.show {
-            max-height: 8000px; /* فضای کافی برای ۵۰ نظر */
-            margin-top: 25px;
-            border-top: 1px dashed #2a394a;
-            padding-top: 20px;
-        }
+        /* زیباسازی اسکرول‌بار نظرات */
+        .comments-scroll-area::-webkit-scrollbar { width: 5px; }
+        .comments-scroll-area::-webkit-scrollbar-track { background: #12181f; border-radius: 10px; }
+        .comments-scroll-area::-webkit-scrollbar-thumb { background: #2a394a; border-radius: 10px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="app-info">
-        <div class="app-icon">
-            <img src="logo.png" alt="آیکون برنامه">
+    <div id="mainPageContent">
+        <div class="app-info">
+            <div class="app-icon">
+                <img src="logo.png" alt="آیکون برنامه">
+            </div>
+            <div class="app-title">
+                <h2>دوستیابی و چت آنلاین</h2>
+                <p>نسخه اندروید (.apk)</p>
+            </div>
         </div>
-        <div class="app-title">
-            <h2>دوستیابی و چت آنلاین</h2>
-            <p>نسخه اندروید (.apk)</p>
-        </div>
-    </div>
 
-    <div class="stats">
-        <div class="stat-item">
-            <div>نصب فعال</div>
-            <div class="stat-value">۵۰ هزار+</div>
+        <div class="stats">
+            <div class="stat-item">
+                <div>نصب فعال</div>
+                <div class="stat-value">۵۰ هزار+</div>
+            </div>
+            <div class="stat-item">
+                <div>امتیاز</div>
+                <div class="stat-value">۴.۶ ★</div>
+            </div>
+            <div class="stat-item">
+                <div>حجم فایل</div>
+                <div class="stat-value">۱۱ مگابایت</div>
+            </div>
         </div>
-        <div class="stat-item">
-            <div>امتیاز</div>
-            <div class="stat-value">۴.۶ ★</div>
-        </div>
-        <div class="stat-item">
-            <div>حجم فایل</div>
-            <div class="stat-value">۱۱ مگابایت</div>
-        </div>
-    </div>
 
-    <div class="features-grid">
-        <div class="feature-box">
-            <div class="feature-icon">💬</div>
-            <div class="feature-title">چت ناشناس</div>
-            <div class="feature-desc">سریع و بدون ردپا</div>
+        <div class="features-grid">
+            <div class="feature-box">
+                <div class="feature-icon">💬</div>
+                <div class="feature-title">چت ناشناس</div>
+                <div class="feature-desc">سریع و بدون ردپا</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">📍</div>
+                <div class="feature-title">رادار همشهری</div>
+                <div class="feature-desc">یافتن افراد نزدیک</div>
+            </div>
+            <div class="feature-box">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-title">امنیت بالا</div>
+                <div class="feature-desc">رمزگذاری گفتگوها</div>
+            </div>
         </div>
-        <div class="feature-box">
-            <div class="feature-icon">📍</div>
-            <div class="feature-title">رادار همشهری</div>
-            <div class="feature-desc">یافتن افراد نزدیک</div>
-        </div>
-        <div class="feature-box">
-            <div class="feature-icon">🔒</div>
-            <div class="feature-title">امنیت بالا</div>
-            <div class="feature-desc">رمزگذاری گفتگوها</div>
-        </div>
-    </div>
 
-    <button class="install-btn" id="downloadBtn">
-        <span class="btn-text" id="btnText">📥 دانلود و نصب مستقیم</span>
-    </button>
-
-    <div class="antivirus-section">
-        <button class="av-toggle-btn" id="avToggleBtn">
-            <span>🛡️ مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
-            <span class="arrow">▼</span>
+        <button class="install-btn" id="downloadBtn">
+            <span class="btn-text" id="btnText">📥 دانلود و نصب مستقیم</span>
         </button>
-        <div class="av-meta-info">
-            <span>نسخهٔ برنامه: 1.0</span>
-            <span>تاریخ بررسی: <span id="avCurrentDate">در حال بارگذاری...</span></span>
+
+        <div class="antivirus-section">
+            <button class="av-toggle-btn" id="avToggleBtn">
+                <span>🛡️ مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
+                <span class="arrow">▼</span>
+            </button>
+            <div class="av-meta-info">
+                <span>نسخهٔ برنامه: 1.0</span>
+                <span>تاریخ بررسی: <span id="avCurrentDate">در حال بارگذاری...</span></span>
+            </div>
+            <div class="av-content" id="avContent">
+                <div class="av-list">
+                    <div class="av-item"><span class="av-name">McAfee</span><span class="av-status status-clean" data-name="McAfee">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">FSecure</span><span class="av-status status-clean" data-name="FSecure">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">Symantec</span><span class="av-status status-clean" data-name="Symantec">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">ClamAv</span><span class="av-status status-clean" data-name="ClamAv">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">Kaspersky</span><span class="av-status status-clean" data-name="Kaspersky">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">Eset</span><span class="av-status status-clean" data-name="Eset">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">DrWeb</span><span class="av-status status-info" data-name="DrWeb">⚪ بی‌نتیجه</span></div>
+                    <div class="av-item"><span class="av-name">Comodo</span><span class="av-status status-clean" data-name="Comodo">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">ZonerMobileSecurity</span><span class="av-status status-clean" data-name="ZonerMobileSecurity">🟢 سالم</span></div>
+                    <div class="av-item"><span class="av-name">GooglePlayProtect</span><span class="av-status status-clean" data-name="GooglePlayProtect">🟢 سالم</span></div>
+                </div>
+                <div class="av-footer-text">نیازمند بررسی بیشتر؛ در حال حاضر برای این نسخه از برنامه، از سوی این ابزار شناسایی بدافزار پاسخی دریافت نشده است.</div>
+            </div>
         </div>
-        <div class="av-content" id="avContent">
-            <div class="av-list">
-                <div class="av-item">
-                    <span class="av-name">McAfee</span>
-                    <span class="av-status status-clean" data-name="McAfee">🟢 سالم</span>
+
+        <div class="screenshots">
+            <div class="screenshot-item"><img src="pic1.jpg" alt="پیش‌نمایش ۱"></div>
+            <div class="screenshot-item"><img src="pic2.jpg" alt="پیش‌نمایش ۲"></div>
+        </div>
+
+        <div class="description">
+            <h3>درباره برنامه</h3>
+            <p>به دنیای جذاب دوستیابی و چت خوش آمدید! با این اپلیکیشن می‌تونی به سادگی و در محیطی امن، دوست‌های جدیدی پیدا کنی، با هم گپ بزنید و لحظات خوشی را بسازید. فضایی پویا و شاد برای آشنایی‌های تازه. همین حالا برنامه رو نصب کن و به جمع هزاران کاربر ما بپیوند.</p>
+        </div>
+
+        <div class="comments-section">
+            <div class="comments-header">
+                <h3>نظرات و امتیازها</h3>
+                <span class="more-link" id="openCommentsPageBtn">بیشتر 〉</span>
+            </div>
+
+            <div class="rating-summary">
+                <div class="rating-big-number">
+                    <h1>۴٫۶</h1>
+                    <div class="stars-blue">★★★★★</div>
+                    <div class="rating-count">۲,۰۷۶ نفر</div>
                 </div>
-                <div class="av-item">
-                    <span class="av-name">FSecure</span>
-                    <span class="av-status status-clean" data-name="FSecure">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">Symantec</span>
-                    <span class="av-status status-clean" data-name="Symantec">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">ClamAv</span>
-                    <span class="av-status status-clean" data-name="ClamAv">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">Kaspersky</span>
-                    <span class="av-status status-clean" data-name="Kaspersky">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">Eset</span>
-                    <span class="av-status status-clean" data-name="Eset">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">DrWeb</span>
-                    <span class="av-status status-info" data-name="DrWeb">⚪ بی‌نتیجه</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">Comodo</span>
-                    <span class="av-status status-clean" data-name="Comodo">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">ZonerMobileSecurity</span>
-                    <span class="av-status status-clean" data-name="ZonerMobileSecurity">🟢 سالم</span>
-                </div>
-                <div class="av-item">
-                    <span class="av-name">GooglePlayProtect</span>
-                    <span class="av-status status-clean" data-name="GooglePlayProtect">🟢 سالم</span>
+                <div class="rating-bars">
+                    <div class="bar-item"><span>۵</span><div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div></div>
+                    <div class="bar-item"><span>۴</span><div class="bar-bg"><div class="bar-fill" style="width: 8%;"></div></div></div>
+                    <div class="bar-item"><span>۳</span><div class="bar-bg"><div class="bar-fill" style="width: 5%;"></div></div></div>
+                    <div class="bar-item"><span>۲</span><div class="bar-bg"><div class="bar-fill" style="width: 3%;"></div></div></div>
+                    <div class="bar-item"><span>۱</span><div class="bar-bg"><div class="bar-fill" style="width: 9%;"></div></div></div>
                 </div>
             </div>
-            <div class="av-footer-text">
-                نیازمند بررسی بیشتر؛ در حال حاضر برای این نسخه از برنامه، از سوی این ابزار شناسایی بدافزار پاسخی دریافت نشده است.
+
+            <div class="comment-card">
+                <div class="user-info-row">
+                    <div class="user-profile"><div class="user-avatar">N</div><div><div class="user-name">Navid</div><div class="stars-blue">★★★★★</div></div></div>
+                    <div class="comment-meta"><span class="menu-dots">⋮</span><div style="margin-top: 5px;">۴ خرداد ۱۴۰۵</div></div>
+                </div>
+                <div class="comment-text">حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰😊</div>
+                <div class="comment-actions"><div class="action-item">👍 <span>۴۳</span></div><div class="action-item">👎 <span>۵۶</span></div></div>
+            </div>
+
+            <div class="comment-card">
+                <div class="user-info-row">
+                    <div class="user-profile"><div class="user-avatar">M</div><div><div class="user-name">مایکل جکسون</div><div class="stars-blue">★★★★★</div></div></div>
+                    <div class="comment-meta"><span class="menu-dots">⋮</span><div style="margin-top: 5px;">۳ روز پیش</div></div>
+                </div>
+                <div class="comment-text">خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه <br><span style="color: #42a5f5; font-size: 12px; cursor: pointer;">ویژگی های خوبی دارد بیشتر</span></div>
+                <div class="comment-actions"><div class="action-item">👍 <span>۳</span></div><div class="action-item">👎 <span>۴</span></div></div>
+            </div>
+
+            <div class="comment-card">
+                <div class="user-info-row">
+                    <div class="user-profile"><div class="user-avatar">A</div><div><div class="user-name">ali9504</div><div class="stars-blue">★★★★★</div></div></div>
+                    <div class="comment-meta"><span class="menu-dots">⋮</span><div style="margin-top: 5px;">۱۱ خرداد ۱۴۰۵</div></div>
+                </div>
+                <div class="comment-text">برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید</div>
+                <div class="comment-actions"><div class="action-item">👍 <span>۱۵</span></div><div class="action-item">👎 <span>۶</span></div></div>
             </div>
         </div>
     </div>
 
-    <div class="screenshots">
-        <div class="screenshot-item">
-            <img src="pic1.jpg" alt="پیش‌نمایش ۱">
+    <div class="all-comments-page" id="allCommentsPage">
+        <div class="comments-page-header">
+            <button class="back-btn" id="closeCommentsPageBtn">➔</button>
+            <div class="comments-page-title">نظرات کاربران (۵۰)</div>
         </div>
-        <div class="screenshot-item">
-            <img src="pic2.jpg" alt="پیش‌نمایش ۲">
-        </div>
-    </div>
-
-    <div class="description">
-        <h3>درباره برنامه</h3>
-        <p>
-            به دنیای جذاب دوستیابی و چت خوش آمدید! با این اپلیکیشن می‌تونی به سادگی و در محیطی امن، دوست‌های جدیدی پیدا کنی، با هم گپ بزنید و لحظات خوشی را بسازید. فضایی پویا و شاد برای آشنایی‌های تازه. همین حالا برنامه رو نصب کن و به جمع هزاران کاربر ما بپیوند.
-        </p>
-    </div>
-
-    <div class="comments-section">
-        <div class="comments-header">
-            <h3>نظرات و امتیازها</h3>
-            <span class="more-link" id="loadMoreBtn">بیشتر 〉</span>
-        </div>
-
-        <div class="rating-summary">
-            <div class="rating-big-number">
-                <h1>۴٫۶</h1>
-                <div class="stars-blue">★★★★★</div>
-                <div class="rating-count">۲,۰۷۶ نفر</div>
+        <div class="comments-scroll-area" id="commentsScrollArea">
             </div>
-            <div class="rating-bars">
-                <div class="bar-item">
-                    <span>۵</span>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 75%;"></div></div>
-                </div>
-                <div class="bar-item">
-                    <span>۴</span>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 8%;"></div></div>
-                </div>
-                <div class="bar-item">
-                    <span>۳</span>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 5%;"></div></div>
-                </div>
-                <div class="bar-item">
-                    <span>۲</span>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 3%;"></div></div>
-                </div>
-                <div class="bar-item">
-                    <span>۱</span>
-                    <div class="bar-bg"><div class="bar-fill" style="width: 9%;"></div></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="comment-card">
-            <div class="user-info-row">
-                <div class="user-profile">
-                    <div class="user-avatar">N</div>
-                    <div>
-                        <div class="user-name">Navid</div>
-                        <div class="stars-blue">★★★★★</div>
-                    </div>
-                </div>
-                <div class="comment-meta">
-                    <span class="menu-dots">⋮</span>
-                    <div style="margin-top: 5px;">۴ خرداد ۱۴۰۵</div>
-                </div>
-            </div>
-            <div class="comment-text">
-                حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰😊
-            </div>
-            <div class="comment-actions">
-                <div class="action-item">👍 <span>۴۳</span></div>
-                <div class="action-item">👎 <span>۵۶</span></div>
-            </div>
-        </div>
-
-        <div class="comment-card">
-            <div class="user-info-row">
-                <div class="user-profile">
-                    <div class="user-avatar">M</div>
-                    <div>
-                        <div class="user-name">مایکل جکسون</div>
-                        <div class="stars-blue">★★★★★</div>
-                    </div>
-                </div>
-                <div class="comment-meta">
-                    <span class="menu-dots">⋮</span>
-                    <div style="margin-top: 5px;">۳ روز پیش</div>
-                </div>
-            </div>
-            <div class="comment-text">
-                خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه <br>
-                <span style="color: #42a5f5; font-size: 12px; cursor: pointer;">ویژگی های خوبی دارد بیشتر</span>
-            </div>
-            <div class="comment-actions">
-                <div class="action-item">👍 <span>۳</span></div>
-                <div class="action-item">👎 <span>۴</span></div>
-            </div>
-        </div>
-
-        <div class="comment-card">
-            <div class="user-info-row">
-                <div class="user-profile">
-                    <div class="user-avatar">A</div>
-                    <div>
-                        <div class="user-name">ali9504</div>
-                        <div class="stars-blue">★★★★★</div>
-                    </div>
-                </div>
-                <div class="comment-meta">
-                    <span class="menu-dots">⋮</span>
-                    <div style="margin-top: 5px;">۱۱ خرداد ۱۴۰۵</div>
-                </div>
-            </div>
-            <div class="comment-text">
-                برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید
-            </div>
-            <div class="comment-actions">
-                <div class="action-item">👍 <span>۱۵</span></div>
-                <div class="action-item">👎 <span>۶</span></div>
-            </div>
-        </div>
-
-        <div class="more-comments-container" id="moreCommentsContainer"></div>
-
     </div>
 </div>
 
 <script>
-    // تنظیم خودکار تاریخ شمسی زنده امروز
+    // تنظیم خودکار تاریخ بررسی آنتی‌ویروس
     function updatePersianDate() {
         const today = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -675,7 +464,7 @@
     }
     updatePersianDate();
 
-    // مدیریت بخش آنتی ویروس
+    // مدیریت آنتی‌ویروس کشویی
     const avToggleBtn = document.getElementById('avToggleBtn');
     const avContent = document.getElementById('avContent');
     const avStatuses = document.querySelectorAll('.av-status');
@@ -707,7 +496,7 @@
         }
     });
 
-    // دیتابیس ۵۰ نظر فوق‌العاده مثبت به همراه نام‌ها و تعداد ستاره‌های مختلف
+    // لیست ۵۰ نظر مثبت توسعه‌یافته با نام‌های ایرانی و ستاره‌های متنوع
     const extraComments = [
         { name: "علیرضا رضایی", stars: "★★★★★", text: "واقعا بهترین برنامه چتی هست که تا حالا دیدم، سرعتش عالیه و کاربراش واقعی هستن.", date: "۱ روز پیش", likes: 24, dislikes: 2 },
         { name: "مهدی هاشمی", stars: "★★★★★", text: "محیطش خیلی امنه. سیستم چت ناشناسی که داره معرکه‌ست. دمتون گرم حتما نصب کنید.", date: "۲ روز پیش", likes: 19, dislikes: 1 },
@@ -761,13 +550,16 @@
         { name: "سپیده نامور", stars: "★★★★★", text: "برنامه فوق العاده کارآمدی هستش، ممنون از این ایده خلاقانه.", date: "۶ ماه پیش", likes: 19, dislikes: 1 }
     ];
 
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-    const moreCommentsContainer = document.getElementById('moreCommentsContainer');
-    let isCommentsLoaded = false;
+    // مدیریت باز و بسته شدن صفحه اختصاصی نظرات
+    const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
+    const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
+    const allCommentsPage = document.getElementById('allCommentsPage');
+    const commentsScrollArea = document.getElementById('commentsScrollArea');
+    let isPagePopulated = false;
 
-    // تزریق خودکار ۵۰ نظر مثبت با زدن روی دکمه بیشتر
-    loadMoreBtn.addEventListener('click', () => {
-        if (!isCommentsLoaded) {
+    openCommentsPageBtn.addEventListener('click', () => {
+        // ایجاد و تزریق ۵۰ نظر فقط در اولین کلیک برای بهینه‌سازی سرعت
+        if (!isPagePopulated) {
             extraComments.forEach(comment => {
                 const firstChar = comment.name.charAt(0);
                 const card = document.createElement('div');
@@ -792,20 +584,21 @@
                         <div class="action-item">👎 <span>${comment.dislikes}</span></div>
                     </div>
                 `;
-                moreCommentsContainer.appendChild(card);
+                commentsScrollArea.appendChild(card);
             });
-            isCommentsLoaded = true;
+            isPagePopulated = true;
         }
-
-        moreCommentsContainer.classList.toggle('show');
-        if (moreCommentsContainer.classList.contains('show')) {
-            loadMoreBtn.innerText = 'بستن 〉';
-        } else {
-            loadMoreBtn.innerText = 'بیشتر 〉';
-        }
+        
+        // نمایش صفحه نظرات
+        allCommentsPage.classList.add('show');
     });
 
-    // مدیریت عملیات دانلود
+    // بازگشت به صفحه اصلی دانلود با زدن دکمه فلش برگشت
+    closeCommentsPageBtn.addEventListener('click', () => {
+        allCommentsPage.classList.remove('show');
+    });
+
+    // مدیریت فرآیند دکمه دانلود اصلی
     const downloadBtn = document.getElementById('downloadBtn');
     const btnText = document.getElementById('btnText');
     let isDownloading = false;

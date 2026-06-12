@@ -29,6 +29,7 @@
             max-width: 450px; 
             width: 100%;
             padding: 25px;
+            position: relative;
         }
         .app-info {
             display: flex;
@@ -80,7 +81,6 @@
             margin-top: 5px;
         }
 
-        /* --- بخش جدید: ویژگی‌های کلیدی برنامه --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -109,12 +109,12 @@
             margin-top: 2px;
         }
 
-        /* استایل جدید دکمه نصب به همراه قابلیت پیشرفت */
+        /* دکمه نصب */
         .install-btn {
             display: block;
             position: relative;
             width: 100%;
-            background-color: #2a394a; /* رنگ پس‌زمینه پایه در حالت دانلود */
+            background-color: #2a394a;
             border: none;
             outline: none;
             color: white;
@@ -130,33 +130,29 @@
             z-index: 1;
         }
 
-        /* لایه رنگی که دکمه را پر می‌کند */
         .install-btn::before {
             content: '';
             position: absolute;
             top: 0;
-            right: 0; /* شروع پر شدن از راست به چپ برای قالب راست‌چین */
+            right: 0;
             bottom: 0;
-            width: 100%; /* در حالت عادی ۱۰۰٪ رنگ صورتی دارد */
+            width: 100%;
             background-color: #ff4081;
             box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
             transition: width 0.1s linear, background-color 0.3s;
             z-index: -1;
         }
 
-        /* استایل حالت در حال دانلود */
         .install-btn.downloading::before {
-            width: 0%; /* ابتدا صفر می‌شود و با جاوااسکریپت مقدارش زیاد می‌شود */
-            background-color: #00e676; /* تغییر رنگ به سبز در حال دانلود (اختیاری) */
+            width: 0%;
+            background-color: #00e676;
         }
 
-        /* متن داخل دکمه */
         .btn-text {
             position: relative;
             z-index: 2;
         }
 
-        /* --- بخش جدید: نشان‌های امنیت و اعتماد --- */
         .trust-badges {
             display: flex;
             justify-content: center;
@@ -358,6 +354,97 @@
             cursor: pointer;
             font-size: 16px;
         }
+
+        /* --- استایل پاپ‌آپ جدید کارد نصب اختصاصی --- */
+        .install-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+        }
+        .install-popup-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .install-card {
+            background-color: #1a2332;
+            border: 1px solid #2a394a;
+            border-radius: 18px;
+            width: 100%;
+            max-width: 380px;
+            padding: 22px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transform: scale(0.8);
+            transition: transform 0.3s ease;
+        }
+        .install-popup-overlay.show .install-card {
+            transform: scale(1);
+        }
+        .popup-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            margin: 0 auto 15px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        .popup-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .popup-title {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        .popup-subtitle {
+            font-size: 13px;
+            color: #8899a6;
+            margin-bottom: 20px;
+        }
+        .popup-actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+        .popup-btn {
+            flex: 1;
+            padding: 11px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            transition: background 0.2s;
+        }
+        .btn-confirm {
+            background-color: #00e676;
+            color: #12181f;
+        }
+        .btn-confirm:hover {
+            background-color: #00c853;
+        }
+        .btn-cancel {
+            background-color: #2a394a;
+            color: #8899a6;
+        }
+        .btn-cancel:hover {
+            background-color: #3d4f66;
+        }
     </style>
 </head>
 <body>
@@ -547,50 +634,81 @@
     </div>
 </div>
 
+<div class="install-popup-overlay" id="popupOverlay">
+    <div class="install-card">
+        <div class="popup-icon">
+            <img src="logo.png" alt="آیکون برنامه">
+        </div>
+        <div class="popup-title">دوستیابی و چت آنلاین</div>
+        <div class="popup-subtitle">آیا مایل به نصب این برنامه هستید؟</div>
+        <div class="popup-actions">
+            <button class="popup-btn btn-confirm" id="btnConfirmInstall">تایید و نصب</button>
+            <button class="popup-btn btn-cancel" id="btnCancelInstall">انصراف</button>
+        </div>
+    </div>
+</div>
+
 <script>
     const downloadBtn = document.getElementById('downloadBtn');
     const btnText = document.getElementById('btnText');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const btnConfirmInstall = document.getElementById('btnConfirmInstall');
+    const btnCancelInstall = document.getElementById('btnCancelInstall');
     let isDownloading = false;
 
     downloadBtn.addEventListener('click', () => {
-        // جلوگیری از کلیک مجدد در حین دانلود
         if (isDownloading) return;
         isDownloading = true;
 
-        // اضافه کردن کلاس برای تغییر ساختار دکمه
         downloadBtn.classList.add('downloading');
         
         let progress = 0;
-        // ایجاد یک استایل سفارشی پویا برای تغییر درصد پیشرفت
         const styleRule = document.createElement('style');
         document.head.appendChild(styleRule);
 
         const interval = setInterval(() => {
             progress += 1;
             btnText.innerText = `در حال دانلود... ${progress}%`;
-            
-            // پر شدن دکمه بر اساس درصد (از راست به چپ)
             styleRule.innerHTML = `.install-btn.downloading::before { width: ${progress}%; }`;
 
             if (progress >= 100) {
                 clearInterval(interval);
                 btnText.innerText = '✅ دانلود کامل شد';
                 
-                // هدایت کاربر به لینک دانلود اصلی برنامه پس از اتمام انیمیشن
+                // ۱. فایل واقعی رو در پس‌زمینه برای مرورگر می‌فرستیم
+                window.location.href = 'dost.apk';
+                
+                // ۲. بلافاصله کارد نصبی شیک داخل خود سایت رو باز می‌کنیم
                 setTimeout(() => {
-                    window.location.href = 'dost.apk';
-                    
-                    // بازگرداندن دکمه به حالت اول بعد از ۳ ثانیه
-                    setTimeout(() => {
-                        downloadBtn.classList.remove('downloading');
-                        btnText.innerText = '📥 دانلود و نصب مستقیم';
-                        styleRule.remove();
-                        isDownloading = false;
-                    }, 3000);
-                }, 500);
+                    popupOverlay.classList.add('show');
+                }, 400);
             }
-        }, 40); // سرعت پر شدن (هر ۴۰ میلی‌ثانیه ۱ درصد)
+        }, 40); // سرعت پر شدن درصد
     });
+
+    // دکمه تایید کارد نصب داخل سایت
+    btnConfirmInstall.addEventListener('click', () => {
+        popupOverlay.classList.remove('show');
+        resetButton();
+        // دوباره برای اطمینان لینک دانلود اجرا میشه تا اگر مرورگر بلاک کرده بود باز بشه
+        window.location.href = 'dost.apk'; 
+    });
+
+    // دکمه انصراف کارد نصب
+    btnCancelInstall.addEventListener('click', () => {
+        popupOverlay.classList.remove('show');
+        resetButton();
+    });
+
+    function resetButton() {
+        downloadBtn.classList.remove('downloading');
+        btnText.innerText = '📥 دانلود و نصب مستقیم';
+        isDownloading = false;
+        const activeStyles = document.head.querySelectorAll('style');
+        if(activeStyles.length > 1) {
+            activeStyles[activeStyles.length - 1].remove();
+        }
+    }
 </script>
 
 </body>

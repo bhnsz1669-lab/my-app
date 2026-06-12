@@ -76,7 +76,7 @@
         }
         .stat-value {
             font-weight: bold;
-            color: #42a5f5; /* رنگ آمارها به آبی تغییر کرد */
+            color: #42a5f5;
             font-size: 16px;
             margin-top: 5px;
         }
@@ -109,7 +109,6 @@
             margin-top: 2px;
         }
 
-        /* دکمه دانلود با نوار پیشرفت آبی */
         .install-btn {
             display: block;
             position: relative;
@@ -136,21 +135,20 @@
             right: 0;
             bottom: 0;
             width: 100%;
-            background-color: #1e88e5; /* رنگ دکمه اصلی به آبی قشنگ تغییر کرد */
-            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4); /* سایه آبی */
+            background-color: #1e88e5;
+            box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4);
             transition: width 0.1s linear, background-color 0.3s;
             z-index: -1;
         }
         .install-btn.downloading::before {
             width: 0%;
-            background-color: #00e676; /* رنگ سبز حین دانلود بارگیری */
+            background-color: #00e676;
         }
         .btn-text {
             position: relative;
             z-index: 2;
         }
 
-        /* --- استایل اختصاصی بخش بررسی آنتی ویروس --- */
         .antivirus-section {
             background-color: #12181f;
             border-radius: 15px;
@@ -216,17 +214,10 @@
             align-items: center;
             gap: 6px;
             font-weight: bold;
-            transition: color 0.3s;
         }
-        .status-clean {
-            color: #00e676;
-        }
-        .status-scanning {
-            color: #ffb300;
-        }
-        .status-info {
-            color: #90a4ae;
-        }
+        .status-clean { color: #00e676; }
+        .status-scanning { color: #ffb300; }
+        .status-info { color: #90a4ae; }
         .av-footer-text {
             font-size: 10px;
             color: #78909c;
@@ -269,7 +260,7 @@
         .description h3 {
             font-size: 16px;
             margin-bottom: 8px;
-            color: #42a5f5; /* تیتر درباره برنامه هم به آبی تغییر کرد */
+            color: #42a5f5;
         }
         .description p {
             color: #b0bec5;
@@ -277,7 +268,6 @@
             text-align: justify;
         }
 
-        /* --- بخش نظرات و امتیازها --- */
         .comments-section {
             background-color: #12181f;
             border-radius: 12px;
@@ -297,6 +287,8 @@
             color: #42a5f5;
             text-decoration: none;
             font-size: 14px;
+            cursor: pointer;
+            user-select: none;
         }
         .rating-summary {
             display: flex;
@@ -375,10 +367,13 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            overflow: hidden;
+            background-color: #2a394a;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-weight: bold;
+            color: #42a5f5;
+            font-size: 16px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .user-avatar img {
@@ -420,6 +415,19 @@
             color: #8899a6;
             cursor: pointer;
             font-size: 16px;
+        }
+
+        /* محفظه مخفی برای ۵۰ نظر بیشتر */
+        .more-comments-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out;
+        }
+        .more-comments-container.show {
+            max-height: 8000px; /* فضای کافی برای ۵۰ نظر */
+            margin-top: 25px;
+            border-top: 1px dashed #2a394a;
+            padding-top: 20px;
         }
     </style>
 </head>
@@ -550,7 +558,7 @@
     <div class="comments-section">
         <div class="comments-header">
             <h3>نظرات و امتیازها</h3>
-            <a href="#" class="more-link">بیشتر 〉</a>
+            <span class="more-link" id="loadMoreBtn">بیشتر 〉</span>
         </div>
 
         <div class="rating-summary">
@@ -559,7 +567,6 @@
                 <div class="stars-blue">★★★★★</div>
                 <div class="rating-count">۲,۰۷۶ نفر</div>
             </div>
-            
             <div class="rating-bars">
                 <div class="bar-item">
                     <span>۵</span>
@@ -587,9 +594,7 @@
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
-                    <div class="user-avatar">
-                        <img src="navid.jpg" alt="پروفایل Navid">
-                    </div>
+                    <div class="user-avatar">N</div>
                     <div>
                         <div class="user-name">Navid</div>
                         <div class="stars-blue">★★★★★</div>
@@ -612,9 +617,7 @@
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
-                    <div class="user-avatar">
-                        <img src="michael.jpg" alt="پروفایل مایکل جکسون">
-                    </div>
+                    <div class="user-avatar">M</div>
                     <div>
                         <div class="user-name">مایکل جکسون</div>
                         <div class="stars-blue">★★★★★</div>
@@ -638,9 +641,7 @@
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
-                    <div class="user-avatar">
-                        <img src="ali.jpg" alt="پروفایل ali9504">
-                    </div>
+                    <div class="user-avatar">A</div>
                     <div>
                         <div class="user-name">ali9504</div>
                         <div class="stars-blue">★★★★★</div>
@@ -660,20 +661,21 @@
             </div>
         </div>
 
+        <div class="more-comments-container" id="moreCommentsContainer"></div>
+
     </div>
 </div>
 
 <script>
-    // تابع تنظیم خودکار تاریخ شمسی زنده امروز
+    // تنظیم خودکار تاریخ شمسی زنده امروز
     function updatePersianDate() {
         const today = new Date();
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         document.getElementById('avCurrentDate').innerText = today.toLocaleDateString('fa-IR', options);
     }
-    
-    // اجرای اولیه تاریخ امروز
     updatePersianDate();
 
+    // مدیریت بخش آنتی ویروس
     const avToggleBtn = document.getElementById('avToggleBtn');
     const avContent = document.getElementById('avContent');
     const avStatuses = document.querySelectorAll('.av-status');
@@ -682,19 +684,14 @@
     avToggleBtn.addEventListener('click', () => {
         avToggleBtn.classList.toggle('active');
         avContent.classList.toggle('show');
-
-        // هر بار کلیک، تاریخ خودکار با روز جاری آپدیت می‌شود
         updatePersianDate();
 
-        // اجرای فرآیند انیمیشن زنده اسکن آنتی‌ویروس‌ها برای جلب اعتماد کاربر
         if (!hasScanned) {
             hasScanned = true;
-            
             avStatuses.forEach(status => {
                 status.className = 'av-status status-scanning';
                 status.innerText = '🟡 در حال بررسی...';
             });
-
             avStatuses.forEach((status, index) => {
                 const targetName = status.getAttribute('data-name');
                 setTimeout(() => {
@@ -710,45 +707,14 @@
         }
     });
 
-    // مدیریت انیمیشن و عملیات دکمه دانلود
-    const downloadBtn = document.getElementById('downloadBtn');
-    const btnText = document.getElementById('btnText');
-    let isDownloading = false;
-
-    downloadBtn.addEventListener('click', () => {
-        if (isDownloading) return;
-        isDownloading = true;
-
-        downloadBtn.classList.add('downloading');
-        
-        let progress = 0;
-        const styleRule = document.createElement('style');
-        document.head.appendChild(styleRule);
-
-        const interval = setInterval(() => {
-            progress += 1;
-            btnText.innerText = `در حال دانلود... ${progress}%`;
-            
-            styleRule.innerHTML = `.install-btn.downloading::before { width: ${progress}%; }`;
-
-            if (progress >= 100) {
-                clearInterval(interval);
-                btnText.innerText = '✅ دانلود کامل شد';
-                
-                setTimeout(() => {
-                    window.location.href = 'dost.apk';
-                    
-                    setTimeout(() => {
-                        downloadBtn.classList.remove('downloading');
-                        btnText.innerText = '📥 دانلود و نصب مستقیم';
-                        styleRule.remove();
-                        isDownloading = false;
-                    }, 3000);
-                }, 500);
-            }
-        }, 40);
-    });
-</script>
-
-</body>
-</html>
+    // دیتابیس ۵۰ نظر فوق‌العاده مثبت به همراه نام‌ها و تعداد ستاره‌های مختلف
+    const extraComments = [
+        { name: "علیرضا رضایی", stars: "★★★★★", text: "واقعا بهترین برنامه چتی هست که تا حالا دیدم، سرعتش عالیه و کاربراش واقعی هستن.", date: "۱ روز پیش", likes: 24, dislikes: 2 },
+        { name: "مهدی هاشمی", stars: "★★★★★", text: "محیطش خیلی امنه. سیستم چت ناشناسی که داره معرکه‌ست. دمتون گرم حتما نصب کنید.", date: "۲ روز پیش", likes: 19, dislikes: 1 },
+        { name: "سارا احمدی", stars: "★★★★", text: "برنامه خیلی خوبیه، دوستای صمیمی و خوبی پیدا کردم. دست طراحش درد نکنه.", date: "۲ روز پیش", likes: 31, dislikes: 4 },
+        { name: "امیرحسین زارع", stars: "★★★★★", text: "خیلی سریع وصل میشه و رادار همشهریش دقیق کار میکنه. عالیه واقعا.", date: "۳ روز پیش", likes: 15, dislikes: 0 },
+        { name: "فاطمه مرادی", stars: "★★★★★", text: "برنامه جذاب و سرگرم‌کننده‌ایه. من که کلی باهاش حال کردم و به بقیه هم پیشنهادش میدم.", date: "۴ روز پیش", likes: 42, dislikes: 3 },
+        { name: "حسین حسینی", stars: "★★★★★", text: "بین تمام برنامه‌های مشابه این سرتره چون تبلیغات رو مخ نداره و محیطش خلوته.", date: "۴ روز پیش", likes: 22, dislikes: 1 },
+        { name: "محمد محمدی", stars: "★★★★", text: "فوق العاده است. سرعت بالا ارسال پیام‌ها خیلی برام مهم بود که این اپ داره.", date: "۵ روز پیش", likes: 11, dislikes: 2 },
+        { name: "زینب عباسی", stars: "★★★★★", text: "بسیار عالی و کاربردی. دمتون گرم بابت این برنامه بی نظیر و چت روان.", date: "۶ روز پیش", likes: 27, dislikes: 0 },
+        { name: "رضا کریمی", stars: "★★★★★", text: "رادار نزدیک یابش عالیه، تونستم کلی آدم با

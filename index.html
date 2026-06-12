@@ -247,7 +247,7 @@
         .bar-fill { background-color: #546e7a; height: 100%; border-radius: 3px; }
         
         .comment-card { margin-bottom: 25px; border-bottom: 1px solid #2a394a; padding-bottom: 15px; }
-        .comment-card:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+        .comment-card:last-child { border-bottom: none; padding-bottom: 15px; margin-bottom: 15px; }
         .user-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
         .user-profile { display: flex; align-items: center; gap: 10px; }
         .user-avatar { width: 40px; height: 40px; border-radius: 50%; background-color: #2a394a; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #42a5f5; font-size: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
@@ -258,7 +258,29 @@
         .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; }
         .menu-dots { color: #8899a6; cursor: pointer; font-size: 16px; }
 
-        /* 👑 صفحه تمام‌صفحه جدید برای نمایش اختصاصی ۵۰ نظر 👑 */
+        /* 👑 استایل دکمه کپسولی بزرگ و شیک "همه نظرات" 👑 */
+        .all-comments-btn {
+            display: block;
+            width: 100%;
+            background: none;
+            border: 1px solid #3d4f66;
+            color: #42a5f5;
+            text-align: center;
+            padding: 12px;
+            border-radius: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            margin-top: 5px;
+            outline: none;
+        }
+        .all-comments-btn:hover {
+            background-color: rgba(66, 165, 245, 0.05);
+            border-color: #42a5f5;
+        }
+
+        /* صفحه تمام‌صفحه جدید برای نمایش اختصاصی ۵۰ نظر */
         .all-comments-page {
             position: absolute;
             top: 0;
@@ -269,7 +291,7 @@
             border-radius: 20px;
             padding: 25px;
             z-index: 100;
-            display: none; /* در حالت عادی مخفی است */
+            display: none;
             flex-direction: column;
         }
         .all-comments-page.show {
@@ -299,10 +321,9 @@
         }
         .comments-scroll-area {
             flex-grow: 1;
-            overflow-y: auto; /* اسکرول داخلی فقط برای نظرات */
+            overflow-y: auto;
             padding-left: 5px;
         }
-        /* زیباسازی اسکرول‌بار نظرات */
         .comments-scroll-area::-webkit-scrollbar { width: 5px; }
         .comments-scroll-area::-webkit-scrollbar-track { background: #12181f; border-radius: 10px; }
         .comments-scroll-area::-webkit-scrollbar-thumb { background: #2a394a; border-radius: 10px; }
@@ -442,6 +463,8 @@
                 <div class="comment-text">برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید</div>
                 <div class="comment-actions"><div class="action-item">👍 <span>۱۵</span></div><div class="action-item">👎 <span>۶</span></div></div>
             </div>
+
+            <button class="all-comments-btn" id="allCommentsBtn">همه نظرات</button>
         </div>
     </div>
 
@@ -550,15 +573,8 @@
         { name: "سپیده نامور", stars: "★★★★★", text: "برنامه فوق العاده کارآمدی هستش، ممنون از این ایده خلاقانه.", date: "۶ ماه پیش", likes: 19, dislikes: 1 }
     ];
 
-    // مدیریت باز و بسته شدن صفحه اختصاصی نظرات
-    const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
-    const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
-    const allCommentsPage = document.getElementById('allCommentsPage');
-    const commentsScrollArea = document.getElementById('commentsScrollArea');
-    let isPagePopulated = false;
-
-    openCommentsPageBtn.addEventListener('click', () => {
-        // ایجاد و تزریق ۵۰ نظر فقط در اولین کلیک برای بهینه‌سازی سرعت
+    // تابع کمکی برای باز کردن لایه نظرات
+    function openCommentsPage() {
         if (!isPagePopulated) {
             extraComments.forEach(comment => {
                 const firstChar = comment.name.charAt(0);
@@ -588,10 +604,20 @@
             });
             isPagePopulated = true;
         }
-        
-        // نمایش صفحه نظرات
         allCommentsPage.classList.add('show');
-    });
+    }
+
+    // مدیریت باز و بسته شدن صفحه اختصاصی نظرات
+    const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
+    const allCommentsBtn = document.getElementById('allCommentsBtn'); // دکمه جدید پایین
+    const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
+    const allCommentsPage = document.getElementById('allCommentsPage');
+    const commentsScrollArea = document.getElementById('commentsScrollArea');
+    let isPagePopulated = false;
+
+    // اتصال هر دو المان (متن بیشتر بالای صفحه و دکمه جدید کپسولی) به تابع باز کردن لایه رو
+    openCommentsPageBtn.addEventListener('click', openCommentsPage);
+    allCommentsBtn.addEventListener('click', openCommentsPage);
 
     // بازگشت به صفحه اصلی دانلود با زدن دکمه فلش برگشت
     closeCommentsPageBtn.addEventListener('click', () => {

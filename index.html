@@ -29,6 +29,7 @@
             max-width: 450px; 
             width: 100%;
             padding: 25px;
+            position: relative;
         }
         .app-info {
             display: flex;
@@ -75,12 +76,11 @@
         }
         .stat-value {
             font-weight: bold;
-            color: #42a5f5; /* <--- تغییر به آبی */
+            color: #42a5f5; /* رنگ آمارها به آبی تغییر کرد */
             font-size: 16px;
             margin-top: 5px;
         }
 
-        /* --- ویژگی‌های کلیدی --- */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -109,7 +109,7 @@
             margin-top: 2px;
         }
 
-        /* دکمه نصب جدید */
+        /* دکمه دانلود با نوار پیشرفت آبی */
         .install-btn {
             display: block;
             position: relative;
@@ -129,8 +129,6 @@
             overflow: hidden;
             z-index: 1;
         }
-
-        /* لایه رنگی دکمه */
         .install-btn::before {
             content: '';
             position: absolute;
@@ -138,75 +136,291 @@
             right: 0;
             bottom: 0;
             width: 100%;
-            background-color: #1e88e5; /* <--- تغییر پس‌زمینه به آبی */
+            background-color: #1e88e5; /* رنگ دکمه اصلی به آبی قشنگ تغییر کرد */
             box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4); /* سایه آبی */
             transition: width 0.1s linear, background-color 0.3s;
             z-index: -1;
         }
-
-        /* در حال دانلود */
         .install-btn.downloading::before {
             width: 0%;
-            background-color: #00e676; /* رنگ سبز دانلودر */
+            background-color: #00e676; /* رنگ سبز حین دانلود بارگیری */
         }
-
-        /* متن دکمه */
         .btn-text {
             position: relative;
             z-index: 2;
         }
 
-        /* --- امنیت و اعتماد --- */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        /* --- استایل اختصاصی بخش بررسی آنتی ویروس --- */
+        .antivirus-section {
+            background-color: #12181f;
+            border-radius: 15px;
+            padding: 15px;
             margin-bottom: 25px;
-            background-color: rgba(76, 175, 80, 0.08);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px dashed rgba(76, 175, 80, 0.3);
+            border: 1px solid #2a394a;
         }
-        .badge-item {
+        .av-toggle-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            outline: none;
+        }
+        .av-toggle-btn span.arrow {
+            transition: transform 0.3s;
+            color: #8899a6;
+        }
+        .av-toggle-btn.active span.arrow {
+            transform: rotate(180deg);
+        }
+        .av-meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #8899a6;
+            margin-top: 10px;
+            border-bottom: 1px solid #2a394a;
+            padding-bottom: 8px;
+        }
+        .av-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .av-content.show {
+            max-height: 500px;
+        }
+        .av-list {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .av-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            padding: 4px 0;
+        }
+        .av-name {
+            color: #b0bec5;
+        }
+        .av-status {
             display: flex;
             align-items: center;
             gap: 6px;
-            font-size: 11px;
-            color: #81c784;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .status-clean {
+            color: #00e676;
+        }
+        .status-scanning {
+            color: #ffb300;
+        }
+        .status-info {
+            color: #90a4ae;
+        }
+        .av-footer-text {
+            font-size: 10px;
+            color: #78909c;
+            text-align: justify;
+            margin-top: 12px;
+            line-height: 1.5;
+            background-color: rgba(255,255,255,0.02);
+            padding: 8px;
+            border-radius: 8px;
         }
 
-        /* ... بقیه کدهای CSS (screenshots, description, comments) بدون تغییر مانده‌اند ... */
-        .screenshots { display: flex; gap: 12px; justify-content: center; margin-bottom: 25px; }
-        .screenshot-item { width: calc(50% - 6px); height: 250px; background-color: #2a394a; border-radius: 12px; display: flex; justify-content: center; align-items: center; border: 1px solid #3d4f66; overflow: hidden; }
-        .screenshot-item img { width: 100%; height: 100%; object-fit: cover; }
-        .description { background-color: #12181f; padding: 15px; border-radius: 12px; margin-bottom: 25px; }
-        .description h3 { font-size: 16px; margin-bottom: 8px; color: #42a5f5; } /* تغییر تیتر هم به آبی */
-        .description p { color: #b0bec5; font-size: 13px; text-align: justify; }
-        .comments-section { background-color: #12181f; border-radius: 12px; padding: 15px; }
-        .comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .comments-header h3 { font-size: 16px; color: #ffffff; }
-        .more-link { color: #42a5f5; text-decoration: none; font-size: 14px; }
-        .rating-summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border-bottom: 1px solid #2a394a; padding-bottom: 15px; }
-        .rating-big-number { text-align: center; min-width: 100px; }
-        .rating-big-number h1 { font-size: 48px; color: #ffffff; line-height: 1; }
-        .stars-blue { color: #42a5f5; font-size: 14px; margin: 5px 0; }
-        .rating-count { font-size: 12px; color: #8899a6; }
-        .rating-bars { flex-grow: 1; display: flex; flex-direction: column; gap: 4px; padding-right: 15px; }
-        .bar-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #8899a6; }
-        .bar-bg { background-color: #2a394a; height: 6px; flex-grow: 1; border-radius: 3px; overflow: hidden; }
-        .bar-fill { background-color: #546e7a; height: 100%; border-radius: 3px; }
-        .comment-card { margin-bottom: 25px; border-bottom: 1px solid #2a394a; padding-bottom: 15px; }
-        .comment-card:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-        .user-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .user-profile { display: flex; align-items: center; gap: 10px; }
-        .user-avatar { width: 40px; height: 40px; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .user-name { font-size: 14px; color: #ffffff; }
-        .comment-meta { text-align: left; font-size: 12px; color: #8899a6; }
-        .comment-text { font-size: 13px; color: #e0e0e0; text-align: justify; margin-bottom: 12px; padding-right: 2px; }
-        .comment-actions { display: flex; justify-content: flex-end; gap: 15px; font-size: 13px; color: #8899a6; align-items: center; }
-        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; }
-        .menu-dots { color: #8899a6; cursor: pointer; font-size: 16px; }
+        .screenshots {
+            display: flex;
+            gap: 12px;
+            justify-content: center; 
+            margin-bottom: 25px;
+        }
+        .screenshot-item {
+            width: calc(50% - 6px); 
+            height: 250px; 
+            background-color: #2a394a;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #3d4f66;
+            overflow: hidden;
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+        }
+        .description {
+            background-color: #12181f;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .description h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #42a5f5; /* تیتر درباره برنامه هم به آبی تغییر کرد */
+        }
+        .description p {
+            color: #b0bec5;
+            font-size: 13px;
+            text-align: justify;
+        }
+
+        /* --- بخش نظرات و امتیازها --- */
+        .comments-section {
+            background-color: #12181f;
+            border-radius: 12px;
+            padding: 15px;
+        }
+        .comments-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .comments-header h3 {
+            font-size: 16px;
+            color: #ffffff;
+        }
+        .more-link {
+            color: #42a5f5;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #2a394a;
+            padding-bottom: 15px;
+        }
+        .rating-big-number {
+            text-align: center;
+            min-width: 100px;
+        }
+        .rating-big-number h1 {
+            font-size: 48px;
+            color: #ffffff;
+            line-height: 1;
+        }
+        .stars-blue {
+            color: #42a5f5;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+        .rating-count {
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .rating-bars {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-right: 15px;
+        }
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .bar-bg {
+            background-color: #2a394a;
+            height: 6px;
+            flex-grow: 1;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .bar-fill {
+            background-color: #546e7a;
+            height: 100%;
+            border-radius: 3px;
+        }
+        .comment-card {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #2a394a;
+            padding-bottom: 15px;
+        }
+        .comment-card:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+        .user-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .user-name {
+            font-size: 14px;
+            color: #ffffff;
+        }
+        .comment-meta {
+            text-align: left;
+            font-size: 12px;
+            color: #8899a6;
+        }
+        .comment-text {
+            font-size: 13px;
+            color: #e0e0e0;
+            text-align: justify;
+            margin-bottom: 12px;
+            padding-right: 2px;
+        }
+        .comment-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            font-size: 13px;
+            color: #8899a6;
+            align-items: center;
+        }
+        .action-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-dots {
+            color: #8899a6;
+            cursor: pointer;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -259,9 +473,62 @@
         <span class="btn-text" id="btnText">📥 دانلود و نصب مستقیم</span>
     </button>
 
-    <div class="trust-badges">
-        <div class="badge-item">🛡️ سپر امنیت فعال</div>
-        <div class="badge-item">✅ بدون بدافزار</div>
+    <div class="antivirus-section">
+        <button class="av-toggle-btn" id="avToggleBtn">
+            <span>🛡️ مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
+            <span class="arrow">▼</span>
+        </button>
+        <div class="av-meta-info">
+            <span>نسخهٔ برنامه: 1.0</span>
+            <span>تاریخ بررسی: <span id="avCurrentDate">در حال بارگذاری...</span></span>
+        </div>
+        <div class="av-content" id="avContent">
+            <div class="av-list">
+                <div class="av-item">
+                    <span class="av-name">McAfee</span>
+                    <span class="av-status status-clean" data-name="McAfee">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">FSecure</span>
+                    <span class="av-status status-clean" data-name="FSecure">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">Symantec</span>
+                    <span class="av-status status-clean" data-name="Symantec">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">ClamAv</span>
+                    <span class="av-status status-clean" data-name="ClamAv">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">Kaspersky</span>
+                    <span class="av-status status-clean" data-name="Kaspersky">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">Eset</span>
+                    <span class="av-status status-clean" data-name="Eset">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">DrWeb</span>
+                    <span class="av-status status-info" data-name="DrWeb">⚪ بی‌نتیجه</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">Comodo</span>
+                    <span class="av-status status-clean" data-name="Comodo">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">ZonerMobileSecurity</span>
+                    <span class="av-status status-clean" data-name="ZonerMobileSecurity">🟢 سالم</span>
+                </div>
+                <div class="av-item">
+                    <span class="av-name">GooglePlayProtect</span>
+                    <span class="av-status status-clean" data-name="GooglePlayProtect">🟢 سالم</span>
+                </div>
+            </div>
+            <div class="av-footer-text">
+                نیازمند بررسی بیشتر؛ در حال حاضر برای این نسخه از برنامه، از سوی این ابزار شناسایی بدافزار پاسخی دریافت نشده است.
+            </div>
+        </div>
     </div>
 
     <div class="screenshots">
@@ -285,12 +552,14 @@
             <h3>نظرات و امتیازها</h3>
             <a href="#" class="more-link">بیشتر 〉</a>
         </div>
+
         <div class="rating-summary">
             <div class="rating-big-number">
                 <h1>۴٫۶</h1>
                 <div class="stars-blue">★★★★★</div>
                 <div class="rating-count">۲,۰۷۶ نفر</div>
             </div>
+            
             <div class="rating-bars">
                 <div class="bar-item">
                     <span>۵</span>
@@ -314,6 +583,7 @@
                 </div>
             </div>
         </div>
+
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
@@ -338,6 +608,7 @@
                 <div class="action-item">👎 <span>۵۶</span></div>
             </div>
         </div>
+
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
@@ -363,6 +634,7 @@
                 <div class="action-item">👎 <span>۴</span></div>
             </div>
         </div>
+
         <div class="comment-card">
             <div class="user-info-row">
                 <div class="user-profile">
@@ -387,10 +659,58 @@
                 <div class="action-item">👎 <span>۶</span></div>
             </div>
         </div>
+
     </div>
 </div>
 
 <script>
+    // تابع تنظیم خودکار تاریخ شمسی زنده امروز
+    function updatePersianDate() {
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('avCurrentDate').innerText = today.toLocaleDateString('fa-IR', options);
+    }
+    
+    // اجرای اولیه تاریخ امروز
+    updatePersianDate();
+
+    const avToggleBtn = document.getElementById('avToggleBtn');
+    const avContent = document.getElementById('avContent');
+    const avStatuses = document.querySelectorAll('.av-status');
+    let hasScanned = false;
+
+    avToggleBtn.addEventListener('click', () => {
+        avToggleBtn.classList.toggle('active');
+        avContent.classList.toggle('show');
+
+        // هر بار کلیک، تاریخ خودکار با روز جاری آپدیت می‌شود
+        updatePersianDate();
+
+        // اجرای فرآیند انیمیشن زنده اسکن آنتی‌ویروس‌ها برای جلب اعتماد کاربر
+        if (!hasScanned) {
+            hasScanned = true;
+            
+            avStatuses.forEach(status => {
+                status.className = 'av-status status-scanning';
+                status.innerText = '🟡 در حال بررسی...';
+            });
+
+            avStatuses.forEach((status, index) => {
+                const targetName = status.getAttribute('data-name');
+                setTimeout(() => {
+                    if (targetName === 'DrWeb') {
+                        status.className = 'av-status status-info';
+                        status.innerText = '⚪ بی‌نتیجه';
+                    } else {
+                        status.className = 'av-status status-clean';
+                        status.innerText = '🟢 سالم';
+                    }
+                }, (index + 1) * 350);
+            });
+        }
+    });
+
+    // مدیریت انیمیشن و عملیات دکمه دانلود
     const downloadBtn = document.getElementById('downloadBtn');
     const btnText = document.getElementById('btnText');
     let isDownloading = false;

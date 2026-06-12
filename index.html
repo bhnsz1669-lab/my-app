@@ -199,7 +199,6 @@
         }
         .status-clean { color: #00e676; font-weight: bold; }
         .status-scanning { color: #ffd54f; font-weight: bold; }
-        .status-none { color: #8899a6; }
 
         /* اسکرین‌شات‌ها */
         .screenshots { display: flex; gap: 10px; justify-content: center; margin-bottom: 14px; }
@@ -486,22 +485,22 @@
 </div>
 
 <script>
-    // لیست آنتی‌ویروس‌ها برای شبیه‌سازی بررسی واقعی
+    // لیست آنتی‌ویروس‌ها برای شبیه‌سازی واقعی
     const antivirusList = [
         "McAfee", "FSecure", "Symantec", "ClamAv", "Kaspersky", 
         "Eset", "DrWeb", "Comodo", "ZonerMobileSecurity", "GooglePlayProtect"
     ];
 
-    // تابع تبدیل تاریخ میلادی مرورگر به شمسی واقعی سیستم کاربر
+    // تابع تبدیل تاریخ سیستم به شمسی واقعی روز
     function getJalaliDateString() {
         const options = { calendar: 'persian', year: 'numeric', month: 'long', day: 'numeric' };
         return new Intl.DateTimeFormat('fa-IR', options).format(new Date());
     }
 
-    // مقداردهی اولیه تاریخ بررسی آنتی‌ویروس به تاریخ امروز سیستم
+    // مقداردهی اولیه تاریخ به امروز
     document.getElementById('avScanDate').innerText = getJalaliDateString();
 
-    // ایجاد لیست اولیه آنتی‌ویروس‌ها
+    // رندر اولیه ساختار لیست آنتی‌ویروس‌ها
     const avListContainer = document.getElementById('avListContainer');
     function initAntivirusList() {
         avListContainer.innerHTML = '';
@@ -516,16 +515,16 @@
     }
     initAntivirusList();
 
-    // عملیات شبیه‌سازی هوشمند و زنده اسکن آنتی‌ویروس‌ها
+    // اسکن بسیار طبیعی و غیرهمزمان (یکی یکی با تاخیرهای متغیر)
     let isScanning = false;
     function startLiveAntivirusScan() {
         if (isScanning) return; 
         isScanning = true;
 
-        // بروزرسانی تاریخ به زمان دقیق دکمه زدن کاربر
+        // بروزرسانی تاریخ به ثانیه‌ای که کاربر کلیک کرده است
         document.getElementById('avScanDate').innerText = getJalaliDateString();
 
-        // تبدیل وضعیت همه به "در حال بررسی..."
+        // ۱. همه آنتی‌ویروس‌ها را در جا به حالت «⏳ در حال بررسی...» می‌بریم
         antivirusList.forEach((name, index) => {
             const statusEl = document.getElementById(`av-status-${index}`);
             if (statusEl) {
@@ -534,23 +533,36 @@
             }
         });
 
-        // تغییر یکی یکی به وضعیت سالم با فواصل زمانی متغیر و واقعی
-        antivirusList.forEach((name, index) => {
+        // ۲. آرایه‌ای از ایندکس‌ها درست می‌کنیم و ترتیب آن‌ها را به هم می‌زنیم تا ترتیب سبز شدن تصادفی و طبیعی باشد
+        let indices = antivirusList.map((_, i) => i);
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
+        }
+
+        // ۳. ایجاد تاخیر پله‌ای و انباشته‌شونده برای تک‌تک آنتی‌ویروس‌ها
+        let currentDelay = 400; // تاخیر اولیه شروع اولین آنتی ویروس
+        
+        indices.forEach((listIndex, sequenceOrder) => {
+            // برای هر آنتی‌ویروس یک زمان انتظار تصادفی بین ۵۰۰ تا ۱۲۰۰ میلی‌ثانیه نسبت به قبلی اضافه می‌کنیم
+            currentDelay += Math.floor(Math.random() * 700) + 500; 
+
             setTimeout(() => {
-                const statusEl = document.getElementById(`av-status-${index}`);
+                const statusEl = document.getElementById(`av-status-${listIndex}`);
                 if (statusEl) {
                     statusEl.className = "av-status status-clean";
                     statusEl.innerText = "🟢 سالم";
                 }
-                // اگر آخری بود وضعیت اسکن تمام شود
-                if (index === antivirusList.length - 1) {
+                
+                // در صورتی که آخرین آنتی‌ویروس در نوبت سبز شد، قفل اسکن برداشته شود
+                if (sequenceOrder === indices.length - 1) {
                     isScanning = false;
                 }
-            }, (index + 1) * 250 + (Math.random() * 200)); 
+            }, currentDelay);
         });
     }
 
-    // مدیریت باز و بسته شدن و اجرای اسکن زنده آنتی ویروس
+    // باز و بسته شدن بخش آنتی ویروس و تحریک فرآیند اسکن طبیعی
     const avToggleBtn = document.getElementById('avToggleBtn');
     const avContent = document.getElementById('avContent');
     if(avToggleBtn && avContent) {
@@ -560,7 +572,7 @@
             if(isOpened) {
                 avContent.classList.add('show');
                 if(arrow) arrow.style.transform = "rotate(180deg)";
-                startLiveAntivirusScan(); // اجرای اسکن زنده به محض باز کردن دکمه
+                startLiveAntivirusScan(); // اجرای فرآیند اسکن زنده
             } else {
                 avContent.classList.remove('show');
                 if(arrow) arrow.style.transform = "rotate(0deg)";
@@ -568,7 +580,7 @@
         });
     }
 
-    // دیتابیس جامع نظرات صفحه همراه با سیستم لایک و دیسلایک
+    // دیتابیس نظرات کاربران
     const databaseComments = [
         { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
         { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
@@ -579,7 +591,7 @@
         { id: 7, name: "نیما قاسمی", rating: 3, stars: "★★★☆☆", text: "برنامه بدی نیست ولی بعضی وقتا پیام‌ها با تاخیر میره نمیدونم مشکل از نت منه یا سرور برنامه", date: "۱ هفته پیش", likes: 31, dislikes: 12, userAction: null }
     ];
 
-    // سیستم لایک و دیسلایک هوشمند نظرات
+    // سیستم لایک و دیسلایک
     function handleLikeDislike(commentId, action) {
         const comment = databaseComments.find(c => c.id === commentId);
         if (!comment) return;
@@ -601,7 +613,7 @@
         renderPageComments(activeFilter);
     }
 
-    // ساخت ساختار HTML نظرات
+    // تولید کدهای HTML نظرات
     function createCommentCardHTML(comment, isMainPage = false) {
         const firstChar = comment.name.charAt(0);
         const likeClass = comment.userAction === 'like' ? 'liked' : '';
@@ -635,7 +647,6 @@
         `;
     }
 
-    // رندر کردن نظرات صفحه اصلی
     function renderMainPageComments() {
         const container = document.getElementById('mainPageCommentsContainer');
         if(!container) return;
@@ -645,7 +656,6 @@
         });
     }
 
-    // رندر نظرات داخل لایه جدید همه نظرات
     function renderPageComments(filterType) {
         const container = document.getElementById('pageCommentsContainer');
         if(!container) return;
@@ -668,7 +678,7 @@
 
     renderMainPageComments();
 
-    // مدیریت باز شدن لایه "همه نظرات" کاملاً بدون خطا و منطبق بر اول صفحه
+    // مدیریت لایه رویی همه نظرات
     const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
     const allCommentsBtn = document.getElementById('allCommentsBtn');
     const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
@@ -678,7 +688,7 @@
 
     function openCommentsPage() {
         if(!allCommentsPage) return;
-        allCommentsPage.style.display = 'flex';
+        allCommentsPage.classList.add('show');
         renderPageComments('all');
         
         filterChips.forEach(c => c.classList.remove('active'));
@@ -692,7 +702,7 @@
 
     if(closeCommentsPageBtn && allCommentsPage) {
         closeCommentsPageBtn.addEventListener('click', () => {
-            allCommentsPage.style.display = 'none';
+            allCommentsPage.classList.remove('show');
         });
     }
 

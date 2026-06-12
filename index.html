@@ -131,7 +131,7 @@
             box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
         }
 
-        /* بخش آنتی ویروس کامپکت */
+        /* بخش آنتی ویروس */
         .antivirus-section {
             background-color: #12181f;
             border-radius: 12px;
@@ -190,16 +190,6 @@
         }
         .status-clean { color: #00e676; }
         .status-info { color: #90a4ae; }
-        .av-footer-text {
-            font-size: 10px;
-            color: #78909c;
-            text-align: justify;
-            margin-top: 8px;
-            line-height: 1.4;
-            background-color: rgba(255,255,255,0.02);
-            padding: 6px;
-            border-radius: 6px;
-        }
 
         /* اسکرین‌شات‌ها و توضیحات */
         .screenshots { display: flex; gap: 10px; justify-content: center; margin-bottom: 14px; }
@@ -215,7 +205,7 @@
         .comments-header h3 { font-size: 15px; color: #ffffff; }
         .more-link { color: #42a5f5; text-decoration: none; font-size: 13px; cursor: pointer; user-select: none; }
         
-        /* باکس خلاصه آمار امتیازها */
+        /* آمار امتیازها */
         .rating-summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid #2a394a; padding-bottom: 10px; }
         .rating-big-number { text-align: center; min-width: 90px; }
         .rating-big-number h1 { font-size: 40px; color: #ffffff; line-height: 1; font-family: 'Arial Black', sans-serif; }
@@ -226,21 +216,19 @@
         .bar-bg { background-color: #2a394a; height: 5px; flex-grow: 1; border-radius: 3px; overflow: hidden; }
         .bar-fill { background-color: #42a5f5; height: 100%; border-radius: 3px; }
         
-        /* کارت‌های عمومی نظرات */
+        /* کارت‌های نظرات */
         .comment-card { margin-bottom: 14px; border-bottom: 1px solid #2a394a; padding-bottom: 10px; }
         .comment-card:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 10px; }
         .user-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .user-profile { display: flex; align-items: center; gap: 8px; }
         .user-avatar { width: 34px; height: 34px; border-radius: 50%; background-color: #2a394a; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #42a5f5; font-size: 14px; overflow: hidden; }
-        .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .user-name { font-size: 13px; color: #ffffff; }
         .comment-meta { text-align: left; font-size: 11px; color: #8899a6; }
         .comment-text { font-size: 12.5px; color: #e0e0e0; text-align: justify; margin-bottom: 8px; line-height: 1.6; }
         
-        /* دکمه‌های لایک و دیسلایک شبیه تصویر ارسالی */
+        /* لایک و دیسلایک */
         .comment-actions { display: flex; justify-content: flex-end; gap: 16px; font-size: 13px; color: #8899a6; align-items: center; margin-top: 6px; }
-        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 6px; border-radius: 6px; transition: background 0.2s; }
-        .action-item:hover { background-color: rgba(255,255,255,0.05); }
+        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 6px; border-radius: 6px; }
         .action-item.liked { color: #42a5f5; }
         .action-item.disliked { color: #ff4081; }
         .menu-dots { color: #8899a6; cursor: pointer; font-size: 14px; }
@@ -260,7 +248,7 @@
             outline: none;
         }
 
-        /* 👑 صفحه لایه رو: کپی دقیق تصویر ارسالی شما 👑 */
+        /* 👑 لایه رویی «همه نظرات» کاملاً منطبق بر مارکت 👑 */
         .all-comments-page {
             position: absolute;
             top: 0;
@@ -297,7 +285,7 @@
             font-weight: bold;
         }
 
-        /* فیلترهای دکمه‌ای کپسولی کپی دقیق تصویر 1000012376.jpg */
+        /* فیلترهای کپسولی (اصلاح شده بر اساس تصویر جدید) */
         .filter-tabs-container {
             display: flex;
             gap: 6px;
@@ -305,16 +293,16 @@
             padding-bottom: 12px;
             margin-bottom: 12px;
             border-bottom: 1px solid #2a394a;
-            flex-direction: row-reverse; /* برای چیدمان از راست به چپ فیلترها کاملاً مطابق مارکت */
+            flex-direction: row-reverse; /* چیدمان دقیقاً از راست به چپ مشابه عکس */
         }
         .filter-tabs-container::-webkit-scrollbar {
             display: none;
         }
         .filter-chip {
             background-color: #12181f;
-            color: #8899a6;
-            border: 1px solid #2a394a;
-            padding: 5px 16px;
+            color: #e0e0e0;
+            border: 1px solid #3d4f66;
+            padding: 6px 18px;
             border-radius: 20px;
             font-size: 12px;
             cursor: pointer;
@@ -322,15 +310,16 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            transition: all 0.2s;
+            user-select: none;
         }
+        /* تغییر رنگ گزینه فعال به آبی مارکتی دقیقاً مثل عکسی که فرستادید */
         .filter-chip.active {
-            background-color: #0b57d0;
-            color: #ffffff;
-            border-color: #0b57d0;
+            background-color: #0b57d0 !important;
+            color: #ffffff !important;
+            border-color: #0b57d0 !important;
         }
 
-        /* بخش اسکرول نظرات لایه اختصاصی */
+        /* محدوده اسکرول داخلی نظرات */
         .comments-scroll-area {
             flex-grow: 1;
             overflow-y: auto;
@@ -405,19 +394,14 @@
             </button>
             <div class="av-meta-info">
                 <span>نسخهٔ برنامه: 1.0</span>
-                <span>تاریخ بررسی: <span id="avCurrentDate">در حال بارگذاری...</span></span>
+                <span>تاریخ بررسی: <span id="avCurrentDate">امروز</span></span>
             </div>
             <div class="av-content" id="avContent">
                 <div class="av-list">
                     <div class="av-item"><span>McAfee</span><span class="av-status status-clean">🟢 سالم</span></div>
-                    <div class="av-item"><span>FSecure</span><span class="av-status status-clean">🟢 سالم</span></div>
-                    <div class="av-item"><span>Symantec</span><span class="av-status status-clean">🟢 سالم</span></div>
-                    <div class="av-item"><span>ClamAv</span><span class="av-status status-clean">🟢 سالم</span></div>
                     <div class="av-item"><span>Kaspersky</span><span class="av-status status-clean">🟢 سالم</span></div>
-                    <div class="av-item"><span>Eset</span><span class="av-status status-clean">🟢 سالم</span></div>
-                    <div class="av-item"><span>DrWeb</span><span class="av-status status-info">⚪ بی‌نتیجه</span></div>
+                    <div class="av-item"><span>Eset NOD32</span><span class="av-status status-clean">🟢 سالم</span></div>
                 </div>
-                <div class="av-footer-text">نیازمند بررسی بیشتر؛ در حال حاضر پاسخ بدافزاری دریافت نشده است.</div>
             </div>
         </div>
 
@@ -452,8 +436,7 @@
                 </div>
             </div>
 
-            <div id="mainPageCommentsContainer">
-                </div>
+            <div id="mainPageCommentsContainer"></div>
 
             <button class="all-comments-btn" id="allCommentsBtn">همه نظرات</button>
         </div>
@@ -494,66 +477,55 @@
 </div>
 
 <script>
-    // تاریخ امروز آنتی ویروس
-    function updatePersianDate() {
-        const today = new Date();
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
-        document.getElementById('avCurrentDate').innerText = today.toLocaleDateString('fa-IR', options);
-    }
-    updatePersianDate();
-
-    // هندل ضامن آنتی ویروس
-    const avToggleBtn = document.getElementById('avToggleBtn');
-    const avContent = document.getElementById('avContent');
-    avToggleBtn.addEventListener('click', () => {
-        avToggleBtn.classList.toggle('active');
-        avContent.classList.toggle('show');
-    });
-
-    // بانک اطلاعاتی نظرات با مقادیر اولیه لایک و دیسلایک
+    // بانک اطلاعاتی جامع و واقعی نظرات (شامل نظرات قدیمی + ۱۵ نظر کاملاً طبیعی جدید فارسی/انگلیسی)
     const databaseComments = [
-        { id: 1, name: "Navid", avatar: "navid.jpg", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 43, dislikes: 56, userAction: null },
-        { id: 2, name: "مایکل جکسون", avatar: "michael.jpg", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 3, dislikes: 4, userAction: null },
-        { id: 3, name: "ali9504", avatar: "ali.jpg", rating: 5, stars: "★★★★★", text: "برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید", date: "۱ خرداد ۱۴۰۵", likes: 15, dislikes: 6, userAction: null },
-        { id: 4, name: "علیرضا رضایی", avatar: "", rating: 5, stars: "★★★★★", text: "واقعا بهترین برنامه چتی هست که تا حالا دیدم، سرعتش عالیه و کاربراش واقعی هستن.", date: "۱ روز پیش", likes: 24, dislikes: 2, userAction: null },
-        { id: 5, name: "سارا احمدی", avatar: "", rating: 4, stars: "★★★★☆", text: "برنامه خیلی خوبیه، دوستای صمیمی و خوبی پیدا کردم. دست طراحش درد نکنه.", date: "۲ روز پیش", likes: 31, dislikes: 4, userAction: null },
-        { id: 6, name: "پوریا حمیدی", avatar: "", rating: 3, stars: "★★★☆☆", text: "برنامه خوبیه سرعتشم بد نیست ولی کاش تم‌های بیشتری داشت.", date: "۱ ماه پیش", likes: 14, dislikes: 2, userAction: null },
-        { id: 7, name: "کامران رسولی", avatar: "", rating: 2, stars: "★★☆☆☆", text: "بعضی وقتا تو رادار دیر لود میکنه.", date: "۳ ماه پیش", likes: 9, dislikes: 2, userAction: null },
-        { id: 8, name: "مبینا ناصری", avatar: "", rating: 1, stars: "★☆☆☆☆", text: "کاش قابلیت ارسال عکس هم توی چت ناشناس سریع‌تر بود.", date: "۴ ماه پیش", likes: 5, dislikes: 1, userAction: null }
+        // نظرات اصلی شما
+        { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
+        { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
+        { id: 3, name: "ali9504", rating: 5, stars: "★★★★★", text: "برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید", date: "۱۱ خرداد ۱۴۰۵", likes: 19, dislikes: 6, userAction: null },
+        
+        // ۱۵ نظر جدید و کاملاً طبیعی (ترکیب فارسی و انگلیسی با امتیازات مختلف)
+        { id: 4, name: "Amir_Kh", rating: 5, stars: "★★★★★", text: "دمتون گرم واقعا لنگه نداره. رادارش خیلی دقیقه دقیقا بچه های محلمونو اورد بالا پشمام ریخت 😂🔥", date: "۴ روز پیش", likes: 14, dislikes: 2, userAction: null },
+        { id: 5, name: "مهسا رضایی", rating: 4, stars: "★★★★☆", text: "برنامه خوبیه کاربراش واقعی هستن فقط کاش میشد آیدی هم ثبت کرد تو پروفایل ولی در کل راضیم مرسی", date: "۵ روز پیش", likes: 8, dislikes: 1, userAction: null },
+        { id: 6, name: "Saeed78", rating: 5, stars: "★★★★★", text: "Best chat app ever! Very fast connection and nice layout.", date: "۱ هفته پیش", likes: 22, dislikes: 4, userAction: null },
+        { id: 7, name: "نیما قاسمی", rating: 3, stars: "★★★☆☆", text: "برنامه بدی نیست ولی بعضی وقتا پیام‌ها با تاخیر میره نمیدونم مشکل از نت منه یا سرور برنامه", date: "۱ هفته پیش", likes: 31, dislikes: 12, userAction: null },
+        { id: 8, name: "Elnaz_p", rating: 5, stars: "★★★★★", text: "محیطش خیلی امنه و مثل برنامه های دیگه مزاحم و فیک نداره. پیشنهاد میکنم نصب کنید حتما", date: "۲ هفته پیش", likes: 17, dislikes: 3, userAction: null },
+        { id: 9, name: "حسین مرادی", rating: 5, stars: "★★★★★", text: "عالییییییی حتما دانلودش کنید پشیمون نمیشید مچکرم از سازندش", date: "۲ هفته پیش", likes: 9, dislikes: 0, userAction: null },
+        { id: 10, name: "Sara_Anvari", rating: 4, stars: "★★★★☆", text: "چت ناشناشش خیلی باحاله واقعا سرگرم کنندست شبا حوصله ادم سر نمیره", date: "۳ هفته پیش", likes: 11, dislikes: 2, userAction: null },
+        { id: 11, name: "riri_king", rating: 1, stars: "★☆☆☆☆", text: "واسه من اصن کد تایید نمیفرسته با همراه اول! درستش کنید لطفا ستاره دادم درست شه", date: "۳ هفته پیش", likes: 54, dislikes: 19, userAction: null },
+        { id: 12, name: "فاطمه زهرا", rating: 5, stars: "★★★★★", text: "بسیار برنامه عالی و مذهبی پسند، بدون بی احترامی چت میکنیم.", date: "۱ ماه پیش", likes: 4, dislikes: 1, userAction: null },
+        { id: 13, name: "Arash_Sm", rating: 5, stars: "★★★★★", text: "حجمش کمه ولی کاراییش فوق العاده بالاست سرعت لود رادار عالیه دست مریزاد", date: "۱ ماه پیش", likes: 15, dislikes: 2, userAction: null },
+        { id: 14, name: "کیانوش", rating: 2, stars: "★★☆☆☆", text: "چرا بخش پروفایل نمیشه عکس با کیفیت گذاشت؟ کیفیت عکسارو خیلی میاره پایین ادم پشیمون میشه", date: "۱ ماه پیش", likes: 28, dislikes: 7, userAction: null },
+        { id: 15, name: "Mimi_Moradi", rating: 4, stars: "★★★★☆", text: "خوبه کار راه اندازه ممنون", date: "۱ ماه پیش", likes: 3, dislikes: 1, userAction: null },
+        { id: 16, name: "رضا محمدی", rating: 5, stars: "★★★★★", text: "من خیلی وقته دنبال همچین برنامه ای بودم بدون قطعی کار میکنه دمتون گرم واقعا", date: "۲ ماه پیش", likes: 12, dislikes: 1, userAction: null },
+        { id: 17, name: "shayan_ghost", rating: 5, stars: "★★★★★", text: "Nice UI and quick matching system. Works perfectly on my device.", date: "۲ ماه پیش", likes: 8, dislikes: 0, userAction: null },
+        { id: 18, name: "زینب اسدی", rating: 3, stars: "★★★☆☆", text: "معمولیه‌. اپشن هاش کمه ولی کار میکنه.", date: "۲ ماه پیش", likes: 5, dislikes: 2, userAction: null }
     ];
 
-    // سیستم لایک و دیسلایک کلیکی هوشمند
+    // سیستم کلیکی واقعی لایک و دیسلایک
     function handleLikeDislike(commentId, action) {
         const comment = databaseComments.find(c => c.id === commentId);
         if (!comment) return;
 
         if (comment.userAction === action) {
-            // اگر دوباره روی همان دکمه زد، لغو شود
             if (action === 'like') comment.likes--;
             else comment.dislikes--;
             comment.userAction = null;
         } else {
-            // اگر قبلا کار دیگری کرده بود اول قبلی کم شود
             if (comment.userAction === 'like') comment.likes--;
             if (comment.userAction === 'dislike') comment.dislikes--;
 
-            // اضافه کردن اکشن جدید
             if (action === 'like') comment.likes++;
             else comment.dislikes++;
             comment.userAction = action;
         }
-        // رندر مجدد هر دو بخش برای همگام‌سازی اعداد
         renderMainPageComments();
         renderPageComments(document.querySelector('.filter-chip.active').getAttribute('data-filter'));
     }
 
-    // ساختار HTML مربوط به کارت نظر (مشترک)
+    // تولید کدهای HTML نظرات
     function createCommentCardHTML(comment, isMainPage = false) {
         const firstChar = comment.name.charAt(0);
-        const avatarHTML = comment.avatar 
-            ? `<img src="${comment.avatar}" alt="پروفایل ${comment.name}">`
-            : `<div style="background:#2a394a; width:100%; height:100%; display:flex; justify-content:center; align-items:center;">${firstChar}</div>`;
-
         const likeClass = comment.userAction === 'like' ? 'liked' : '';
         const dislikeClass = comment.userAction === 'dislike' ? 'disliked' : '';
 
@@ -561,7 +533,7 @@
             <div class="${isMainPage ? 'comment-card' : 'page-comment-card'}">
                 <div class="user-info-row">
                     <div class="user-profile">
-                        <div class="user-avatar">${avatarHTML}</div>
+                        <div class="user-avatar" style="background-color: #2a394a; color: #42a5f5;">${firstChar}</div>
                         <div>
                             <div class="user-name">${comment.name}</div>
                             <div class="stars-blue">${comment.stars}</div>
@@ -585,7 +557,6 @@
         `;
     }
 
-    // رندر نظرات ۳تای اول صفحه اصلی
     function renderMainPageComments() {
         const container = document.getElementById('mainPageCommentsContainer');
         container.innerHTML = '';
@@ -594,7 +565,6 @@
         });
     }
 
-    // رندر نظرات لایه اختصاصی با فیلتر ستاره‌ها
     function renderPageComments(filterType) {
         const container = document.getElementById('pageCommentsContainer');
         container.innerHTML = '';
@@ -614,10 +584,9 @@
         });
     }
 
-    // اجرای بارگذاری اولیه صفحه اصلی
     renderMainPageComments();
 
-    // بخش مدیریت صفحات و حل مشکل اسکرول به شروع صفحه
+    // مدیریت اسکرول به ابتدای صفحه به صورت تضمینی و آنی
     const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
     const allCommentsBtn = document.getElementById('allCommentsBtn');
     const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
@@ -629,14 +598,12 @@
         allCommentsPage.classList.add('show');
         renderPageComments('all');
         
-        // ریست دکمه فیلتر روی حالت "همه"
+        // بازنشانی دکمه روی حالت آبی "همه"
         filterChips.forEach(c => c.classList.remove('active'));
         document.querySelector('[data-filter="all"]').classList.add('active');
 
-        // 🔥 رفع مشکل: اسکرول کردن به ابتدایی‌ترین نقطه صفحه نظرات به صورت آنی
-        setTimeout(() => {
-            scrollArea.scrollTop = 0;
-        }, 10);
+        // 🔥 فیکس مشکل اسکرول: انتقال کاربر به سقف و ابتدای نظرات بلافاصله پس از کلیک
+        scrollArea.scrollTop = 0;
     }
 
     openCommentsPageBtn.addEventListener('click', openCommentsPage);
@@ -646,7 +613,6 @@
         allCommentsPage.classList.remove('show');
     });
 
-    // سوییچ بین فیلترهای ستاره دار کپسولی
     filterChips.forEach(chip => {
         chip.addEventListener('click', () => {
             filterChips.forEach(c => c.classList.remove('active'));
@@ -654,9 +620,17 @@
             const filterValue = chip.getAttribute('data-filter');
             renderPageComments(filterValue);
             
-            // با زدن روی فیلتر جدید هم اسکرول به بالا می‌رود
+            // انتقال به بالا هنگام جابجایی فیلتر ستاره ها
             scrollArea.scrollTop = 0;
         });
+    });
+
+    // انیمیشن ساده باز و بسته شدن آنتی ویروس
+    const avToggleBtn = document.getElementById('avToggleBtn');
+    const avContent = document.getElementById('avContent');
+    avToggleBtn.addEventListener('click', () => {
+        avToggleBtn.classList.toggle('active');
+        avContent.classList.toggle('show');
     });
 </script>
 

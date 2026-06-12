@@ -513,4 +513,209 @@
             `;
         });
     }
-   
+    initAntivirusList();
+
+    // اسکن بسیار طبیعی و غیرهمزمان (یکی یکی با تاخیرهای متغیر)
+    let isScanning = false;
+    function startLiveAntivirusScan() {
+        if (isScanning) return; 
+        isScanning = true;
+
+        // بروزرسانی تاریخ به ثانیه‌ای که کاربر کلیک کرده است
+        document.getElementById('avScanDate').innerText = getJalaliDateString();
+
+        // ۱. همه آنتی‌ویروس‌ها را در جا به حالت «⏳ در حال بررسی...» می‌بریم
+        antivirusList.forEach((name, index) => {
+            const statusEl = document.getElementById(`av-status-${index}`);
+            if (statusEl) {
+                statusEl.className = "av-status status-scanning";
+                statusEl.innerText = "⏳ در حال بررسی...";
+            }
+        });
+
+        // ۲. آرایه‌ای از ایندکس‌ها درست می‌کنیم و ترتیب آن‌ها را به هم می‌زنیم تا ترتیب سبز شدن تصادفی و طبیعی باشد
+        let indices = antivirusList.map((_, i) => i);
+        for (let i = indices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [indices[i], indices[j]] = [indices[j], indices[i]];
+        }
+
+        // ۳. ایجاد تاخیر پله‌ای و انباشته‌شونده برای تک‌تک آنتی‌ویروس‌ها
+        let currentDelay = 400; // تاخیر اولیه شروع اولین آنتی ویروس
+        
+        indices.forEach((listIndex, sequenceOrder) => {
+            // برای هر آنتی‌ویروس یک زمان انتظار تصادفی بین ۵۰۰ تا ۱۲۰۰ میلی‌ثانیه نسبت به قبلی اضافه می‌کنیم
+            currentDelay += Math.floor(Math.random() * 700) + 500; 
+
+            setTimeout(() => {
+                const statusEl = document.getElementById(`av-status-${listIndex}`);
+                if (statusEl) {
+                    statusEl.className = "av-status status-clean";
+                    statusEl.innerText = "🟢 سالم";
+                }
+                
+                // در صورتی که آخرین آنتی‌ویروس در نوبت سبز شد، قفل اسکن برداشته شود
+                if (sequenceOrder === indices.length - 1) {
+                    isScanning = false;
+                }
+            }, currentDelay);
+        });
+    }
+
+    // باز و بسته شدن بخش آنتی ویروس و تحریک فرآیند اسکن طبیعی
+    const avToggleBtn = document.getElementById('avToggleBtn');
+    const avContent = document.getElementById('avContent');
+    if(avToggleBtn && avContent) {
+        avToggleBtn.addEventListener('click', () => {
+            const arrow = avToggleBtn.querySelector('.arrow');
+            const isOpened = avToggleBtn.classList.toggle('active');
+            if(isOpened) {
+                avContent.classList.add('show');
+                if(arrow) arrow.style.transform = "rotate(180deg)";
+                startLiveAntivirusScan(); // اجرای فرآیند اسکن زنده
+            } else {
+                avContent.classList.remove('show');
+                if(arrow) arrow.style.transform = "rotate(0deg)";
+            }
+        });
+    }
+
+    // دیتابیس نظرات کاربران
+    const databaseComments = [
+        { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
+        { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
+        { id: 3, name: "ali9504", rating: 5, stars: "★★★★★", text: "برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید", date: "۱۱ خرداد ۱۴۰۵", likes: 19, dislikes: 6, userAction: null },
+        { id: 4, name: "Amir_Kh", rating: 5, stars: "★★★★★", text: "دمتون گرم واقعا لنگه نداره. رادارش خیلی دقیقه دقیقا بچه های محلمونو اورد بالا پشمام ریخت 😂🔥", date: "۴ روز پیش", likes: 14, dislikes: 2, userAction: null },
+        { id: 5, name: "مهسا رضایی", rating: 4, stars: "★★★★☆", text: "برنامه خوبیه کاربراش واقعی هستن فقط کاش میشد آیدی هم ثبت کرد تو پروفایل ولی در کل راضیم مرسی", date: "۵ روز پیش", likes: 8, dislikes: 1, userAction: null },
+        { id: 6, name: "Saeed78", rating: 5, stars: "★★★★★", text: "Best chat app ever! Very fast connection and nice layout.", date: "۱ هفته پیش", likes: 22, dislikes: 4, userAction: null },
+        { id: 7, name: "نیما قاسمی", rating: 3, stars: "★★★☆☆", text: "برنامه بدی نیست ولی بعضی وقتا پیام‌ها با تاخیر میره نمیدونم مشکل از نت منه یا سرور برنامه", date: "۱ هفته پیش", likes: 31, dislikes: 12, userAction: null }
+    ];
+
+    // سیستم لایک و دیسلایک
+    function handleLikeDislike(commentId, action) {
+        const comment = databaseComments.find(c => c.id === commentId);
+        if (!comment) return;
+
+        if (comment.userAction === action) {
+            if (action === 'like') comment.likes--;
+            else comment.dislikes--;
+            comment.userAction = null;
+        } else {
+            if (comment.userAction === 'like') comment.likes--;
+            if (comment.userAction === 'dislike') comment.dislikes--;
+
+            if (action === 'like') comment.likes++;
+            else comment.dislikes++;
+            comment.userAction = action;
+        }
+        renderMainPageComments();
+        const activeFilter = document.querySelector('.filter-chip.active').getAttribute('data-filter');
+        renderPageComments(activeFilter);
+    }
+
+    // تولید کدهای HTML نظرات
+    function createCommentCardHTML(comment, isMainPage = false) {
+        const firstChar = comment.name.charAt(0);
+        const likeClass = comment.userAction === 'like' ? 'liked' : '';
+        const dislikeClass = comment.userAction === 'dislike' ? 'disliked' : '';
+
+        return `
+            <div class="${isMainPage ? 'comment-card' : 'page-comment-card'}">
+                <div class="user-info-row">
+                    <div class="user-profile">
+                        <div class="user-avatar" style="background-color: #2a394a; color: #42a5f5; display: flex; justify-content: center; align-items: center; font-weight: bold; width: 34px; height: 34px; border-radius: 50%;">${firstChar}</div>
+                        <div>
+                            <div class="user-name">${comment.name}</div>
+                            <div class="stars-blue">${comment.stars}</div>
+                        </div>
+                    </div>
+                    <div class="comment-meta">
+                        <span class="menu-dots">⋮</span>
+                        <div style="margin-top: 4px;">${comment.date}</div>
+                    </div>
+                </div>
+                <div class="comment-text">${comment.text}</div>
+                <div class="comment-actions">
+                    <div class="action-item ${likeClass}" onclick="handleLikeDislike(${comment.id}, 'like')">
+                        👍 <span>${comment.likes}</span>
+                    </div>
+                    <div class="action-item ${dislikeClass}" onclick="handleLikeDislike(${comment.id}, 'dislike')">
+                        👎 <span>${comment.dislikes}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderMainPageComments() {
+        const container = document.getElementById('mainPageCommentsContainer');
+        if(!container) return;
+        container.innerHTML = '';
+        databaseComments.slice(0, 3).forEach(comment => {
+            container.innerHTML += createCommentCardHTML(comment, true);
+        });
+    }
+
+    function renderPageComments(filterType) {
+        const container = document.getElementById('pageCommentsContainer');
+        if(!container) return;
+        container.innerHTML = '';
+        
+        const filtered = databaseComments.filter(item => {
+            if (filterType === 'all') return true;
+            return item.rating === parseInt(filterType);
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = '<div style="text-align:center; color:#8899a6; font-size:13px; margin-top:30px;">نظری در این بخش ثبت نشده است.</div>';
+            return;
+        }
+
+        filtered.forEach(comment => {
+            container.innerHTML += createCommentCardHTML(comment, false);
+        });
+    }
+
+    renderMainPageComments();
+
+    // مدیریت لایه رویی همه نظرات
+    const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
+    const allCommentsBtn = document.getElementById('allCommentsBtn');
+    const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
+    const allCommentsPage = document.getElementById('allCommentsPage');
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const scrollArea = document.getElementById('pageCommentsContainer');
+
+    function openCommentsPage() {
+        if(!allCommentsPage) return;
+        allCommentsPage.classList.add('show');
+        renderPageComments('all');
+        
+        filterChips.forEach(c => c.classList.remove('active'));
+        const defaultFilter = document.querySelector('[data-filter="all"]');
+        if(defaultFilter) defaultFilter.classList.add('active');
+        if(scrollArea) scrollArea.scrollTop = 0;
+    }
+
+    if(openCommentsPageBtn) openCommentsPageBtn.addEventListener('click', openCommentsPage);
+    if(allCommentsBtn) allCommentsBtn.addEventListener('click', openCommentsPage);
+
+    if(closeCommentsPageBtn && allCommentsPage) {
+        closeCommentsPageBtn.addEventListener('click', () => {
+            allCommentsPage.classList.remove('show');
+        });
+    }
+
+    filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            filterChips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const filterValue = chip.getAttribute('data-filter');
+            renderPageComments(filterValue);
+            if(scrollArea) scrollArea.scrollTop = 0;
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -15,7 +15,7 @@
             background-color: #12181f;
             color: #ffffff;
             direction: rtl;
-            line-height: 1.5;
+            line-height: 1.6;
             padding: 12px;
             display: flex;
             justify-content: center;
@@ -65,7 +65,7 @@
             font-size: 13px;
         }
 
-        /* آمار */
+        /* آمار بالای صفحه - رنگ مقادیر به آبی تغییر کرد */
         .stats {
             display: flex;
             justify-content: space-around;
@@ -81,7 +81,7 @@
         }
         .stat-value {
             font-weight: bold;
-            color: #ff4081;
+            color: #42a5f5; /* آبی روشن */
             font-size: 14px;
             margin-top: 2px;
         }
@@ -115,11 +115,11 @@
             margin-top: 1px;
         }
 
-        /* دکمه دانلود */
+        /* دکمه دانلود مستقیم - رنگ کاملاً آبی شد */
         .install-btn {
             display: block;
             width: 100%;
-            background-color: #ff4081;
+            background-color: #0b57d0; /* آبی مارکتی گوگل پلی */
             color: white;
             text-decoration: none;
             text-align: center;
@@ -128,7 +128,11 @@
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 14px;
-            box-shadow: 0 4px 15px rgba(255, 64, 129, 0.3);
+            box-shadow: 0 4px 15px rgba(11, 87, 208, 0.4); /* سایه هماهنگ آبی */
+            transition: background 0.2s;
+        }
+        .install-btn:hover {
+            background-color: #0a4ebd;
         }
 
         /* بخش آنتی ویروس */
@@ -189,17 +193,18 @@
             font-size: 12px;
         }
         .status-clean { color: #00e676; }
-        .status-info { color: #90a4ae; }
 
         /* اسکرین‌شات‌ها و توضیحات */
         .screenshots { display: flex; gap: 10px; justify-content: center; margin-bottom: 14px; }
         .screenshot-item { width: calc(50% - 5px); height: 210px; background-color: #2a394a; border-radius: 10px; overflow: hidden; border: 1px solid #3d4f66; }
         .screenshot-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* درباره برنامه - رنگ تیتر به آبی تغییر کرد */
         .description { background-color: #12181f; padding: 12px; border-radius: 10px; margin-bottom: 14px; }
-        .description h3 { font-size: 15px; margin-bottom: 6px; color: #ff4081; }
+        .description h3 { font-size: 15px; margin-bottom: 6px; color: #42a5f5; }
         .description p { color: #b0bec5; font-size: 12.5px; text-align: justify; }
 
-        /* بخش اصلی نظرات */
+        /* بخش نظرات صفحه اصلی */
         .comments-section { background-color: #12181f; border-radius: 10px; padding: 12px; }
         .comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .comments-header h3 { font-size: 15px; color: #ffffff; }
@@ -230,9 +235,10 @@
         .comment-actions { display: flex; justify-content: flex-end; gap: 16px; font-size: 13px; color: #8899a6; align-items: center; margin-top: 6px; }
         .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 6px; border-radius: 6px; }
         .action-item.liked { color: #42a5f5; }
-        .action-item.disliked { color: #ff4081; }
+        .action-item.disliked { color: #0b57d0; } /* دیسلایک هماهنگ با طیف رنگی جدید */
         .menu-dots { color: #8899a6; cursor: pointer; font-size: 14px; }
 
+        /* دکمه همه نظرات - کاملاً تراز، استاندارد و فیکس شده از شروع خط */
         .all-comments-btn {
             display: block;
             width: 100%;
@@ -248,7 +254,7 @@
             outline: none;
         }
 
-        /* 👑 لایه رویی «همه نظرات» کاملاً منطبق بر مارکت 👑 */
+        /* 👑 لایه رویی «همه نظرات» کاملاً منطبق بر مارکت و شروع دقیق از بالای صفحه 👑 */
         .all-comments-page {
             position: absolute;
             top: 0;
@@ -285,7 +291,7 @@
             font-weight: bold;
         }
 
-        /* فیلترهای کپسولی (اصلاح شده بر اساس تصویر جدید) */
+        /* فیلترهای کپسولی بیضی شکل */
         .filter-tabs-container {
             display: flex;
             gap: 6px;
@@ -293,7 +299,7 @@
             padding-bottom: 12px;
             margin-bottom: 12px;
             border-bottom: 1px solid #2a394a;
-            flex-direction: row-reverse; /* چیدمان دقیقاً از راست به چپ مشابه عکس */
+            flex-direction: row-reverse;
         }
         .filter-tabs-container::-webkit-scrollbar {
             display: none;
@@ -312,14 +318,13 @@
             gap: 4px;
             user-select: none;
         }
-        /* تغییر رنگ گزینه فعال به آبی مارکتی دقیقاً مثل عکسی که فرستادید */
         .filter-chip.active {
             background-color: #0b57d0 !important;
             color: #ffffff !important;
             border-color: #0b57d0 !important;
         }
 
-        /* محدوده اسکرول داخلی نظرات */
+        /* محدوده اسکرول داخلی نظرات برای شروع از بالاترین نظر اول خط */
         .comments-scroll-area {
             flex-grow: 1;
             overflow-y: auto;
@@ -385,7 +390,7 @@
             </div>
         </div>
 
-        <a href="dost.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
+        <button class="install-btn" id="mainDownloadBtn">📥 دانلود و نصب مستقیم</button>
 
         <div class="antivirus-section">
             <button class="av-toggle-btn" id="avToggleBtn">
@@ -477,14 +482,11 @@
 </div>
 
 <script>
-    // بانک اطلاعاتی جامع و واقعی نظرات (شامل نظرات قدیمی + ۱۵ نظر کاملاً طبیعی جدید فارسی/انگلیسی)
+    // بانک اطلاعاتی جامع و واقعی نظرات شما (شامل تمامی نظرات)
     const databaseComments = [
-        // نظرات اصلی شما
         { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
         { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
         { id: 3, name: "ali9504", rating: 5, stars: "★★★★★", text: "برنامه خوب و با سرعت عالیه. دوستای زیادی میتونی پیدا کنی داخلش. من که خوشم اومد حتما نصب کنید", date: "۱۱ خرداد ۱۴۰۵", likes: 19, dislikes: 6, userAction: null },
-        
-        // ۱۵ نظر جدید و کاملاً طبیعی (ترکیب فارسی و انگلیسی با امتیازات مختلف)
         { id: 4, name: "Amir_Kh", rating: 5, stars: "★★★★★", text: "دمتون گرم واقعا لنگه نداره. رادارش خیلی دقیقه دقیقا بچه های محلمونو اورد بالا پشمام ریخت 😂🔥", date: "۴ روز پیش", likes: 14, dislikes: 2, userAction: null },
         { id: 5, name: "مهسا رضایی", rating: 4, stars: "★★★★☆", text: "برنامه خوبیه کاربراش واقعی هستن فقط کاش میشد آیدی هم ثبت کرد تو پروفایل ولی در کل راضیم مرسی", date: "۵ روز پیش", likes: 8, dislikes: 1, userAction: null },
         { id: 6, name: "Saeed78", rating: 5, stars: "★★★★★", text: "Best chat app ever! Very fast connection and nice layout.", date: "۱ هفته پیش", likes: 22, dislikes: 4, userAction: null },
@@ -502,7 +504,7 @@
         { id: 18, name: "زینب اسدی", rating: 3, stars: "★★★☆☆", text: "معمولیه‌. اپشن هاش کمه ولی کار میکنه.", date: "۲ ماه پیش", likes: 5, dislikes: 2, userAction: null }
     ];
 
-    // سیستم کلیکی واقعی لایک و دیسلایک
+    // هندل سیستم لایک و دیسلایک
     function handleLikeDislike(commentId, action) {
         const comment = databaseComments.find(c => c.id === commentId);
         if (!comment) return;
@@ -523,7 +525,7 @@
         renderPageComments(document.querySelector('.filter-chip.active').getAttribute('data-filter'));
     }
 
-    // تولید کدهای HTML نظرات
+    // تولید کدهای کارت‌های نظرات
     function createCommentCardHTML(comment, isMainPage = false) {
         const firstChar = comment.name.charAt(0);
         const likeClass = comment.userAction === 'like' ? 'liked' : '';
@@ -586,7 +588,7 @@
 
     renderMainPageComments();
 
-    // مدیریت اسکرول به ابتدای صفحه به صورت تضمینی و آنی
+    // هندل کردن دقیق اسکرول به شروع اولین خط نظرات
     const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
     const allCommentsBtn = document.getElementById('allCommentsBtn');
     const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');
@@ -598,11 +600,10 @@
         allCommentsPage.classList.add('show');
         renderPageComments('all');
         
-        // بازنشانی دکمه روی حالت آبی "همه"
         filterChips.forEach(c => c.classList.remove('active'));
         document.querySelector('[data-filter="all"]').classList.add('active');
 
-        // 🔥 فیکس مشکل اسکرول: انتقال کاربر به سقف و ابتدای نظرات بلافاصله پس از کلیک
+        // 🔥 فیکس قطعی مشکل اسکرول: منتقل کردن باکس به بالاترین نقطه (شروع صفحه) به محض باز شدن
         scrollArea.scrollTop = 0;
     }
 
@@ -620,12 +621,12 @@
             const filterValue = chip.getAttribute('data-filter');
             renderPageComments(filterValue);
             
-            // انتقال به بالا هنگام جابجایی فیلتر ستاره ها
+            // اسکرول مجدد به بالا هنگام جابجایی فیلتر ستاره ها
             scrollArea.scrollTop = 0;
         });
     });
 
-    // انیمیشن ساده باز و بسته شدن آنتی ویروس
+    // منوی کشویی بررسی آنتی ویروس
     const avToggleBtn = document.getElementById('avToggleBtn');
     const avContent = document.getElementById('avContent');
     avToggleBtn.addEventListener('click', () => {

@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دوستیابی و چت | دانلود برنامه</title>
+    <link href="https://cdn.jsdelivr.net/npm/vazirmatn@v33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Tahoma, Arial, sans-serif;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
         }
         body {
             background-color: #12181f;
@@ -25,7 +26,7 @@
         .container {
             background-color: #1a2332;
             border-radius: 16px;
-            box-shadow: 0 4px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.5);
             max-width: 430px; 
             width: 100%;
             padding: 16px;
@@ -49,6 +50,7 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            background-color: #2a394a;
         }
         .app-icon img {
             width: 100%;
@@ -59,6 +61,7 @@
             font-size: 18px;
             color: #ffffff;
             margin-bottom: 2px;
+            font-weight: 700;
         }
         .app-title p {
             color: #8899a6;
@@ -95,27 +98,27 @@
         }
         .feature-box {
             background-color: #12181f;
-            padding: 8px 4px;
+            padding: 10px 4px;
             border-radius: 10px;
             text-align: center;
             border: 1px solid #2a394a;
         }
         .feature-icon {
-            font-size: 20px;
-            margin-bottom: 3px;
+            font-size: 22px;
+            margin-bottom: 4px;
         }
         .feature-title {
-            font-size: 11px;
+            font-size: 12px;
             color: #ffffff;
             font-weight: bold;
         }
         .feature-desc {
-            font-size: 9px;
+            font-size: 10px;
             color: #8899a6;
-            margin-top: 1px;
+            margin-top: 2px;
         }
 
-        /* دکمه دانلود مستقیم */
+        /* دکمه دانلود مستقیم همراه با انیمیشن پالس */
         .install-btn {
             display: block;
             width: 100%;
@@ -123,18 +126,25 @@
             color: white;
             text-decoration: none;
             text-align: center;
-            padding: 12px;
+            padding: 14px;
             border-radius: 25px;
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 14px;
             box-shadow: 0 4px 15px rgba(11, 87, 208, 0.4); 
-            transition: background 0.2s;
+            transition: background 0.2s, transform 0.2s;
             cursor: pointer;
             border: none;
+            animation: buttonPulse 2s infinite;
         }
         .install-btn:hover {
             background-color: #0a4ebd;
+            transform: scale(1.02);
+        }
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(11, 87, 208, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0); }
         }
 
         /* بخش آنتی ویروس */
@@ -157,6 +167,7 @@
             font-weight: bold;
             cursor: pointer;
             outline: none;
+            font-family: inherit;
         }
         .av-toggle-btn span.arrow {
             transition: transform 0.3s;
@@ -226,20 +237,20 @@
         
         /* درباره برنامه */
         .description { background-color: #12181f; padding: 12px; border-radius: 10px; margin-bottom: 14px; }
-        .description h3 { font-size: 15px; margin-bottom: 6px; color: #42a5f5; }
-        .description p { color: #b0bec5; font-size: 12.5px; text-align: justify; }
+        .description h3 { font-size: 15px; margin-bottom: 6px; color: #42a5f5; font-weight: 700; }
+        .description p { color: #b0bec5; font-size: 13px; text-align: justify; }
 
         /* بخش نظرات صفحه اصلی */
         .comments-section { background-color: #12181f; border-radius: 10px; padding: 12px; }
         .comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
-        .comments-header h3 { font-size: 15px; color: #ffffff; }
+        .comments-header h3 { font-size: 15px; color: #ffffff; font-weight: 700; }
         .more-link { color: #42a5f5; text-decoration: none; font-size: 13px; cursor: pointer; user-select: none; }
         
         /* آمار امتیازها */
         .rating-summary { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; border-bottom: 1px solid #2a394a; padding-bottom: 10px; }
         .rating-big-number { text-align: center; min-width: 90px; }
-        .rating-big-number h1 { font-size: 40px; color: #ffffff; line-height: 1; font-family: 'Arial Black', sans-serif; }
-        .stars-blue { color: #42a5f5; font-size: 13px; margin: 3px 0; }
+        .rating-big-number h1 { font-size: 40px; color: #ffffff; line-height: 1; font-family: 'Arial Black', sans-serif; font-weight: bold; }
+        .stars-blue { color: #42a5f5; font-size: 13px; margin: 3px 0; letter-spacing: 2px; }
         .rating-count { font-size: 11px; color: #8899a6; }
         .rating-bars { flex-grow: 1; display: flex; flex-direction: column; gap: 4px; padding-right: 12px; }
         .bar-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: #8899a6; }
@@ -252,16 +263,17 @@
         .user-info-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
         .user-profile { display: flex; align-items: center; gap: 8px; }
         .user-avatar { width: 34px; height: 34px; border-radius: 50%; background-color: #2a394a; display: flex; justify-content: center; align-items: center; font-weight: bold; color: #42a5f5; font-size: 14px; overflow: hidden; }
-        .user-name { font-size: 13px; color: #ffffff; }
+        .user-name { font-size: 13px; color: #ffffff; font-weight: bold; }
         .comment-meta { text-align: left; font-size: 11px; color: #8899a6; }
-        .comment-text { font-size: 12.5px; color: #e0e0e0; text-align: justify; margin-bottom: 8px; line-height: 1.6; }
+        .comment-text { font-size: 13px; color: #e0e0e0; text-align: justify; margin-bottom: 8px; line-height: 1.6; }
         
         /* لایک و دیسلایک */
         .comment-actions { display: flex; justify-content: flex-end; gap: 16px; font-size: 13px; color: #8899a6; align-items: center; margin-top: 6px; }
-        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 6px; border-radius: 6px; }
+        .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 6px; border-radius: 6px; transition: background 0.2s; }
+        .action-item:hover { background-color: #2a394a; }
         .action-item.liked { color: #42a5f5; }
-        .action-item.disliked { color: #0b57d0; } 
-        .menu-dots { color: #8899a6; cursor: pointer; font-size: 14px; }
+        .action-item.disliked { color: #f44336; } 
+        .menu-dots { color: #8899a6; cursor: pointer; font-size: 14px; padding: 0 4px; }
 
         /* دکمه همه نظرات */
         .all-comments-btn {
@@ -271,12 +283,17 @@
             border: 1px solid #3d4f66;
             color: #ffffff;
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             border-radius: 25px;
             font-size: 14px;
             cursor: pointer;
             margin-top: 5px;
             outline: none;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+        .all-comments-btn:hover {
+            background-color: #2a394a;
         }
 
         /* لایه رویی «همه نظرات» */
@@ -427,8 +444,7 @@
                 <span style="user-select: none;">تاریخ بررسی: <span id="avScanDate">کلیک کنید</span></span>
             </div>
             <div class="av-content" id="avContent">
-                <div class="av-list" id="avListContainer">
-                    </div>
+                <div class="av-list" id="avListContainer"></div>
             </div>
         </div>
 
@@ -504,22 +520,18 @@
 </div>
 
 <script>
-    // لیست آنتی‌ویروس‌ها برای شبیه‌سازی واقعی
     const antivirusList = [
         "McAfee", "FSecure", "Symantec", "ClamAv", "Kaspersky", 
         "Eset", "DrWeb", "Comodo", "ZonerMobileSecurity", "GooglePlayProtect"
     ];
 
-    // تابع تبدیل تاریخ سیستم به شمسی واقعی روز
     function getJalaliDateString() {
         const options = { calendar: 'persian', year: 'numeric', month: 'long', day: 'numeric' };
         return new Intl.DateTimeFormat('fa-IR', options).format(new Date());
     }
 
-    // مقداردهی اولیه تاریخ به امروز
     document.getElementById('avScanDate').innerText = getJalaliDateString();
 
-    // رندر اولیه ساختار لیست آنتی‌ویروس‌ها
     const avListContainer = document.getElementById('avListContainer');
     function initAntivirusList() {
         avListContainer.innerHTML = '';
@@ -534,16 +546,13 @@
     }
     initAntivirusList();
 
-    // اسکن بسیار طبیعی و غیرهمزمان (یکی یکی با تاخیرهای متغیر)
     let isScanning = false;
     function startLiveAntivirusScan() {
         if (isScanning) return; 
         isScanning = true;
 
-        // بروزرسانی تاریخ به ثانیه‌ای که کاربر کلیک کرده است
         document.getElementById('avScanDate').innerText = getJalaliDateString();
 
-        // ۱. همه آنتی‌ویروس‌ها را در جا به حالت «⏳ در حال بررسی...» می‌بریم
         antivirusList.forEach((name, index) => {
             const statusEl = document.getElementById(`av-status-${index}`);
             if (statusEl) {
@@ -552,18 +561,15 @@
             }
         });
 
-        // ۲. آرایه‌ای از ایندکس‌ها درست می‌کنیم و ترتیب آن‌ها را به هم می‌زنیم تا ترتیب سبز شدن تصادفی و طبیعی باشد
         let indices = antivirusList.map((_, i) => i);
         for (let i = indices.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [indices[i], indices[j]] = [indices[j], indices[i]];
         }
 
-        // ۳. ایجاد تاخیر پله‌ای و انباشته‌شونده برای تک‌تک آنتی‌ویروس‌ها
-        let currentDelay = 400; // تاخیر اولیه شروع اولین آنتی ویروس
+        let currentDelay = 400; 
         
         indices.forEach((listIndex, sequenceOrder) => {
-            // برای هر آنتی‌ویروس یک زمان انتظار تصادفی بین ۵۰۰ تا ۱۲۰۰ میلی‌ثانیه نسبت به قبلی اضافه می‌کنیم
             currentDelay += Math.floor(Math.random() * 700) + 500; 
 
             setTimeout(() => {
@@ -573,7 +579,6 @@
                     statusEl.innerText = "🟢 سالم";
                 }
                 
-                // در صورتی که آخرین آنتی‌ویروس در نوبت سبز شد، قفل اسکن برداشته شود
                 if (sequenceOrder === indices.length - 1) {
                     isScanning = false;
                 }
@@ -581,7 +586,6 @@
         });
     }
 
-    // باز و بسته شدن بخش آنتی ویروس و تحریک فرآیند اسکن طبیعی
     const avToggleBtn = document.getElementById('avToggleBtn');
     const avContent = document.getElementById('avContent');
     if(avToggleBtn && avContent) {
@@ -591,7 +595,7 @@
             if(isOpened) {
                 avContent.classList.add('show');
                 if(arrow) arrow.style.transform = "rotate(180deg)";
-                startLiveAntivirusScan(); // اجرای فرآیند اسکن زنده
+                startLiveAntivirusScan(); 
             } else {
                 avContent.classList.remove('show');
                 if(arrow) arrow.style.transform = "rotate(0deg)";
@@ -599,7 +603,6 @@
         });
     }
 
-    // دیتابیس نظرات کاربران
     const databaseComments = [
         { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
         { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
@@ -610,7 +613,6 @@
         { id: 7, name: "نیما قاسمی", rating: 3, stars: "★★★☆☆", text: "برنامه بدی نیست ولی بعضی وقتا پیام‌ها با تاخیر میره نمیدونم مشکل از نت منه یا سرور برنامه", date: "۱ هفته پیش", likes: 31, dislikes: 12, userAction: null }
     ];
 
-    // سیستم لایک و دیسلایک
     function handleLikeDislike(commentId, action) {
         const comment = databaseComments.find(c => c.id === commentId);
         if (!comment) return;
@@ -628,11 +630,11 @@
             comment.userAction = action;
         }
         renderMainPageComments();
-        const activeFilter = document.querySelector('.filter-chip.active').getAttribute('data-filter');
+        const activeChip = document.querySelector('.filter-chip.active');
+        const activeFilter = activeChip ? activeChip.getAttribute('data-filter') : 'all';
         renderPageComments(activeFilter);
     }
 
-    // تولید کدهای HTML نظرات
     function createCommentCardHTML(comment, isMainPage = false) {
         const firstChar = comment.name.charAt(0);
         const likeClass = comment.userAction === 'like' ? 'liked' : '';
@@ -642,7 +644,7 @@
             <div class="${isMainPage ? 'comment-card' : 'page-comment-card'}">
                 <div class="user-info-row">
                     <div class="user-profile">
-                        <div class="user-avatar" style="background-color: #2a394a; color: #42a5f5; display: flex; justify-content: center; align-items: center; font-weight: bold; width: 34px; height: 34px; border-radius: 50%;">${firstChar}</div>
+                        <div class="user-avatar">${firstChar}</div>
                         <div>
                             <div class="user-name">${comment.name}</div>
                             <div class="stars-blue">${comment.stars}</div>
@@ -655,16 +657,26 @@
                 </div>
                 <div class="comment-text">${comment.text}</div>
                 <div class="comment-actions">
-                    <div class="action-item ${likeClass}" onclick="handleLikeDislike(${comment.id}, 'like')">
+                    <div class="action-item ${likeClass}" data-id="${comment.id}" data-action="like">
                         👍 <span>${comment.likes}</span>
                     </div>
-                    <div class="action-item ${dislikeClass}" onclick="handleLikeDislike(${comment.id}, 'dislike')">
+                    <div class="action-item ${dislikeClass}" data-id="${comment.id}" data-action="dislike">
                         👎 <span>${comment.dislikes}</span>
                     </div>
                 </div>
             </div>
         `;
     }
+
+    // اضافه کردن رویداد کلیک سراسری به جای استفاده از خصوصیت onclick برای بهبود هندلینگ و عملکرد پندینگ المنت‌ها
+    document.addEventListener('click', function(e) {
+        const actionItem = e.target.closest('.action-item');
+        if (actionItem) {
+            const id = parseInt(actionItem.getAttribute('data-id'));
+            const action = actionItem.getAttribute('data-action');
+            handleLikeDislike(id, action);
+        }
+    });
 
     function renderMainPageComments() {
         const container = document.getElementById('mainPageCommentsContainer');
@@ -697,7 +709,6 @@
 
     renderMainPageComments();
 
-    // مدیریت لایه رویی همه نظرات
     const openCommentsPageBtn = document.getElementById('openCommentsPageBtn');
     const allCommentsBtn = document.getElementById('allCommentsBtn');
     const closeCommentsPageBtn = document.getElementById('closeCommentsPageBtn');

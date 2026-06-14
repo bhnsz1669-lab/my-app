@@ -135,7 +135,7 @@
             margin-top: 2px;
         }
 
-        /* دکمه دانلود مستقیم همراه با انیمیشن پالس و آیکون وکتور */
+        /* دکمه دانلود مستقیم همراه با انیمیشن پالس و سایه درخشندگی (Glow Effect) */
         .install-btn {
             display: flex;
             align-items: center;
@@ -151,7 +151,7 @@
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 14px;
-            box-shadow: 0 4px 15px rgba(11, 87, 208, 0.4); 
+            box-shadow: 0 4px 20px rgba(11, 87, 208, 0.6); /* ارتقای افکت درخشندگی */
             transition: background 0.2s, transform 0.2s;
             cursor: pointer;
             border: none;
@@ -167,18 +167,20 @@
             fill: currentColor;
         }
         @keyframes buttonPulse {
-            0% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(11, 87, 208, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0.8); }
+            70% { box-shadow: 0 0 0 12px rgba(11, 87, 208, 0); }
             100% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0); }
         }
 
-        /* بخش آنتی ویروس و کادر راهنمای کوچک و منظم */
+        /* بخش آنتی ویروس با استایل شیشه‌ای (Glassmorphism) سبک مدرن iOS */
         .antivirus-section {
-            background-color: #12181f;
+            background: rgba(18, 24, 31, 0.7); /* پس‌زمینه شیشه‌ای نیمه شفاف */
+            backdrop-filter: blur(12px); /* افکت بلور پس‌زمینه اپل استایل */
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 14px;
-            border: 1px solid #2a394a;
+            border: 1px solid rgba(66, 165, 245, 0.2); /* بوردر ظریف هماهنگ با تم */
         }
         .av-toggle-btn {
             display: flex;
@@ -275,7 +277,16 @@
             height: 15px;
         }
         .status-clean { color: #00e676; font-weight: bold; }
+        
+        /* انیمیشن چرخش ۳۶۰ درجه برای آیکون وضعیت در حال اسکن */
         .status-scanning { color: #ffd54f; font-weight: bold; }
+        .status-scanning .status-icon-svg {
+            animation: spinIcon 1.5s linear infinite;
+        }
+        @keyframes spinIcon {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); } /* چرخش معکوس متناسب با راست‌چین */
+        }
 
         /* پاپ‌آپ راهنمای نصب شیک مدرن */
         .guide-modal-overlay {
@@ -784,7 +795,7 @@
 
     const avListContainer = document.getElementById('avListContainer');
     
-    // جایگزینی 🟢 و ⏳ با وکتورهای حلقه‌ای و خطی سبک تمیز iOS
+    // وکتورهای مینیمال دایره تیک دار و ساعت خطی اپل‌استایل (با انیمیشن فعال شده در CSS)
     const cleanSvg = `<svg class="status-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
     const scanningSvg = `<svg class="status-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#ffd54f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
 

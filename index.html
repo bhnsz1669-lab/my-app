@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دوستیابی و چت | دانلود برنامه</title>
-    <!-- اضافه کردن فونت زیبا و استاندارد وزیرمتن -->
     <link href="https://cdn.jsdelivr.net/npm/vazirmatn@v33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         * {
@@ -35,7 +34,7 @@
             overflow: hidden;
         }
         
-        /* اطلاعات اصلی بالای صفحه و آیکون درخشان انیمیشنی */
+        /* اطلاعات اصلی بالای صفحه و آیکون شناور بدون پس‌زمینه */
         .app-info {
             display: flex;
             align-items: center;
@@ -45,30 +44,32 @@
         .app-icon {
             width: 75px;
             height: 75px;
-            border-radius: 50%;
-            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
             background: transparent;
             position: relative;
-            box-shadow: 0 0 15px rgba(66, 165, 245, 0.4);
-            animation: iconGlow 3s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 12px rgba(66, 165, 245, 0.6));
+            animation: iconFloat 4s infinite ease-in-out;
         }
         .app-icon img {
-            width: 90%;
-            height: 90%;
-            object-fit: cover; 
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            background: transparent;
         }
-        @keyframes iconGlow {
+        @keyframes iconFloat {
             0% {
-                box-shadow: 0 0 10px rgba(66, 165, 245, 0.5), 0 0 20px rgba(66, 165, 245, 0.2);
-                transform: scale(1);
+                transform: translateY(0px) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(66, 165, 245, 0.5));
+            }
+            50% {
+                transform: translateY(-6px) rotate(1deg);
+                filter: drop-shadow(0 0 20px rgba(66, 165, 245, 0.8));
             }
             100% {
-                box-shadow: 0 0 22px rgba(66, 165, 245, 0.9), 0 0 40px rgba(11, 87, 208, 0.6);
-                transform: scale(1.04);
+                transform: translateY(0px) rotate(0deg);
+                filter: drop-shadow(0 0 10px rgba(66, 165, 245, 0.5));
             }
         }
         .app-title h2 {
@@ -134,9 +135,12 @@
             margin-top: 2px;
         }
 
-        /* دکمه دانلود مستقیم همراه با انیمیشن پالس */
+        /* دکمه دانلود مستقیم همراه با انیمیشن پالس و آیکون وکتور */
         .install-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             width: 100%;
             background-color: #0b57d0; 
             color: white;
@@ -157,13 +161,18 @@
             background-color: #0a4ebd;
             transform: scale(1.02);
         }
+        .btn-icon-svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
         @keyframes buttonPulse {
             0% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0.7); }
             70% { box-shadow: 0 0 0 10px rgba(11, 87, 208, 0); }
             100% { box-shadow: 0 0 0 0 rgba(11, 87, 208, 0); }
         }
 
-        /* بخش آنتی ویروس و راهنمای نصب */
+        /* بخش آنتی ویروس و کادر راهنمای کوچک و منظم */
         .antivirus-section {
             background-color: #12181f;
             border-radius: 12px;
@@ -185,6 +194,11 @@
             outline: none;
             font-family: inherit;
         }
+        .av-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .av-toggle-btn span.arrow {
             transition: transform 0.3s;
             color: #8899a6;
@@ -203,12 +217,12 @@
             padding-bottom: 8px;
         }
         
-        /* دکمه اختصاصی راهنمای نصب */
+        /* دکمه اختصاصی کادر راهنمای نصب - اصلاح شده، کوچک و منظم */
         .guide-trigger-btn {
-            background: rgba(255, 152, 0, 0.15);
+            background: rgba(255, 152, 0, 0.12);
             color: #ffb74d;
-            border: 1px dashed #ff9800;
-            padding: 4px 10px;
+            border: 1px solid rgba(255, 152, 0, 0.4);
+            padding: 4px 12px;
             border-radius: 6px;
             cursor: pointer;
             font-size: 11px;
@@ -216,11 +230,16 @@
             transition: all 0.2s;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
         .guide-trigger-btn:hover {
-            background: rgba(255, 152, 0, 0.25);
-            color: #ffffff;
+            background: rgba(255, 152, 0, 0.22);
+            border-color: #ff9800;
+        }
+        .trigger-icon-svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
         }
 
         .av-content {
@@ -245,6 +264,15 @@
         }
         .av-name {
             color: #8899a6;
+        }
+        .av-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .status-icon-svg {
+            width: 15px;
+            height: 15px;
         }
         .status-clean { color: #00e676; font-weight: bold; }
         .status-scanning { color: #ffd54f; font-weight: bold; }
@@ -354,29 +382,30 @@
             background: #12181f;
             border: 1px solid #ff9800;
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
         }
         .android-btn-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             width: 100%;
             background: linear-gradient(135deg, #ff9800, #f57c00);
             color: #12181f;
             border: none;
             padding: 10px;
             border-radius: 8px;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: bold;
-            cursor: pointer;
+            cursor: default;
             font-family: inherit;
             margin-bottom: 8px;
             box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
-            transition: transform 0.2s;
         }
-        .android-btn-link:hover {
-            transform: scale(1.02);
+        .info-icon-svg {
+            width: 16px;
+            height: 16px;
+            fill: #12181f;
         }
         .android-instruction {
             font-size: 11px;
@@ -441,7 +470,7 @@
         .comment-meta { text-align: left; font-size: 11px; color: #8899a6; }
         .comment-text { font-size: 13px; color: #e0e0e0; text-align: justify; margin-bottom: 8px; line-height: 1.6; }
         
-        /* لایک و دیسلایک گرافیکی شیک */
+        /* لایک و دیسلایک گرافیکی */
         .comment-actions { display: flex; justify-content: flex-end; gap: 16px; font-size: 13px; color: #8899a6; align-items: center; margin-top: 6px; }
         .action-item { display: flex; align-items: center; gap: 5px; cursor: pointer; user-select: none; padding: 2px 8px; border-radius: 6px; transition: background 0.2s; }
         .action-item:hover { background-color: #2a394a; }
@@ -591,35 +620,40 @@
 
         <div class="features-grid">
             <div class="feature-box">
-                <!-- آیکون گرافیکی چت ناشناس -->
                 <svg class="feature-icon-svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
                 <div class="feature-title">چت ناشناس</div>
                 <div class="feature-desc">سریع و بدون ردپا</div>
             </div>
             <div class="feature-box">
-                <!-- آیکون گرافیکی رادار همشهری -->
                 <svg class="feature-icon-svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 <div class="feature-title">رادار همشهری</div>
                 <div class="feature-desc">یافتن افراد نزدیک</div>
             </div>
             <div class="feature-box">
-                <!-- آیکون گرافیکی امنیت بالا -->
                 <svg class="feature-icon-svg" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
                 <div class="feature-title">امنیت بالا</div>
                 <div class="feature-desc">رمزگذاری گفتگوها</div>
             </div>
         </div>
 
-        <a href="dost.apk" class="install-btn">📥 دانلود و نصب مستقیم</a>
+        <a href="dost.apk" class="install-btn">
+            <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            دانلود و نصب مستقیم
+        </a>
 
         <div class="antivirus-section">
             <button class="av-toggle-btn" id="avToggleBtn">
-                <span>🛡️ مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
+                <div class="av-title-wrapper">
+                    <svg style="width: 18px; height: 18px;" viewBox="0 0 24 24" fill="none" stroke="#42a5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <span>مشاهده‌ی نتایج بررسی آنتی‌ویروس</span>
+                </div>
                 <span class="arrow">▼</span>
             </button>
             <div class="av-meta-info">
-                <!-- تغییر درخواست شده: دکمه و متن راهنمای نصب قبل از دانلود حتمی -->
-                <button class="guide-trigger-btn" id="openGuideBtn">⚠️ حتماً قبل از نصب بخوانید: راهنمای نصب</button>
+                <button class="guide-trigger-btn" id="openGuideBtn">
+                    <svg class="trigger-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+                    راهنمای نصب
+                </button>
                 <span style="user-select: none;">تاریخ بررسی: <span id="avScanDate">کلیک کنید</span></span>
             </div>
             <div class="av-content" id="avContent">
@@ -698,12 +732,11 @@
     </div>
 </div>
 
-<!-- کادر پاپ‌آپ راهنمای نصب انیمیشنی فوق‌العاده شیک -->
 <div class="guide-modal-overlay" id="guideModal">
     <div class="guide-modal">
         <div class="guide-modal-header">
             <div class="guide-modal-title">
-                <svg style="width:20px; height:20px; fill:#ff9800;" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <svg style="width:20px; height:20px;" viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                 راهنمای نصب گام‌به‌گام برنامه
             </div>
             <button class="guide-close-btn" id="closeGuideBtn">✕</button>
@@ -714,17 +747,18 @@
                 <div class="step-text">برای اتصال صحیح و سرعت حداکثری، لطفاً <span class="step-highlight">بدون فیلترشکن</span> وارد برنامه شوید.</div>
             </div>
             <div class="guide-step-item">
-                <div class="step-number २">۲</div>
-                <div class="step-text">برنامه برای کارکرد کامل رادار و چت، <span class="step-highlight">۳ دسترسی اولیه</span> از شما درخواست میکند که جهت عملکرد صحیح باید آن‌ها را تأیید کنید.</div>
+                <div class="step-number">۲</div>
+                <div class="step-text">برنامه جهت راه‌اندازی و لود کامل خدمات، <span class="step-highlight">۳ دسترسی اولیه</span> از شما درخواست میکند که باید این سه دسترسی را تایید کنید تا برنامه به خوبی کار کند.</div>
             </div>
             <div class="guide-step-item">
-                <div class="step-number ۳">۳</div>
+                <div class="step-number">۳</div>
                 <div class="step-text">
-                    <p style="margin-bottom: 6px;"><span class="step-highlight">مخصوص اندروید ۱۵ و ۱۶:</span> به دلیل قوانین جدید گوگل، باید گزینه‌ی "تنظیمات محدود شده" را مجاز کنید.</p>
+                    <p style="margin-bottom: 6px;"><span class="step-highlight">مخصوص اندروید ۱۵ و ۱۶:</span> به دلیل قوانین جدید اندروید باید گزینه تنظیمات محدود شده فعال باشد تا برنامه باز شود.</p>
                     <div class="android-action-box">
-                        <button class="android-btn-link" id="appInfoHelpBtn">
-                            ℹ️ راهنمای فعال‌سازی سریع دسترسی
-                        </button>
+                        <div class="android-btn-link">
+                            <svg class="info-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#12181f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+                            راهنمای فعال‌سازی سریع دسترسی
+                        </div>
                         <div class="android-instruction">
                             دست خود را روی آیکون اپلیکیشن نگه داشته، روی علامت <b>(i) یا App Info</b> بزنید؛ سپس از منوی سه نقطه بالا سمت راست، گزینه <b>Allow Restricted Settings</b> (اجازه دادن به تنظیمات محدود شده) را فعال کنید.
                         </div>
@@ -749,13 +783,21 @@
     document.getElementById('avScanDate').innerText = getJalaliDateString();
 
     const avListContainer = document.getElementById('avListContainer');
+    
+    // جایگزینی 🟢 و ⏳ با وکتورهای حلقه‌ای و خطی سبک تمیز iOS
+    const cleanSvg = `<svg class="status-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#00e676" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`;
+    const scanningSvg = `<svg class="status-icon-svg" viewBox="0 0 24 24" fill="none" stroke="#ffd54f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+
     function initAntivirusList() {
         avListContainer.innerHTML = '';
         antivirusList.forEach((name, index) => {
             avListContainer.innerHTML += `
                 <div class="av-item">
                     <span class="av-name">${name}</span>
-                    <span class="av-status status-clean" id="av-status-${index}">🟢 سالم</span>
+                    <span class="av-status status-clean" id="av-status-${index}">
+                        ${cleanSvg}
+                        <span>سالم</span>
+                    </span>
                 </div>
             `;
         });
@@ -773,7 +815,7 @@
             const statusEl = document.getElementById(`av-status-${index}`);
             if (statusEl) {
                 statusEl.className = "av-status status-scanning";
-                statusEl.innerText = "⏳ در حال بررسی...";
+                statusEl.innerHTML = `${scanningSvg}<span>در حال بررسی...</span>`;
             }
         });
 
@@ -792,7 +834,7 @@
                 const statusEl = document.getElementById(`av-status-${listIndex}`);
                 if (statusEl) {
                     statusEl.className = "av-status status-clean";
-                    statusEl.innerText = "🟢 سالم";
+                    statusEl.innerHTML = `${cleanSvg}<span>سالم</span>`;
                 }
                 
                 if (sequenceOrder === indices.length - 1) {
@@ -846,14 +888,6 @@
         });
     }
 
-    // دکمه هوشمند راهنمای دسترسی برای افکت انیمیشن کلیک
-    const appInfoHelpBtn = document.getElementById('appInfoHelpBtn');
-    if(appInfoHelpBtn) {
-        appInfoHelpBtn.addEventListener('click', () => {
-            alert('💡 راهنما: برنامه پس از دانلود روی گوشی شما قرار می‌گیرد. کافیست دست خود را روی آیکون آن نگه داشته و دکمه App Info (علامت تعجب داخل دایره) را بزنید تا مستقیماً به صفحه تنظیمات بالا بروید و دسترسی محدود شده را تایید کنید.');
-        });
-    }
-
     const databaseComments = [
         { id: 1, name: "Navid", rating: 5, stars: "★★★★★", text: "حرف نداره کلی دوست جدید پیدا میکنی از همه جا و شهر های مختلف 👍👍🥰🥰 😊", date: "۴ خرداد ۱۴۰۵", likes: 45, dislikes: 56, userAction: null },
         { id: 2, name: "مایکل جکسون", rating: 5, stars: "★★★★★", text: "خیلی برنامه عالی و کاربردی هست از همه لحاظ عالیه ویژگی های خوبی داره کلی دوست جدید میتونی پیدل کنی", date: "۳ روز پیش", likes: 5, dislikes: 5, userAction: null },
@@ -891,7 +925,6 @@
         const likeClass = comment.userAction === 'like' ? 'liked' : '';
         const dislikeClass = comment.userAction === 'dislike' ? 'disliked' : '';
 
-        // ساخت لایک و دیسلایک با وکتور تمیز
         return `
             <div class="${isMainPage ? 'comment-card' : 'page-comment-card'}">
                 <div class="user-info-row">

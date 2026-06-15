@@ -3,7 +3,7 @@ import json
 
 # Pushbullet API configuration
 # -------------------------------------------------------------------------
-PUSHBULLET_TOKEN = "O.JfeuDM6fSK8Mp4odC2XV4gRQrw3C5DIj"
+PUSHBULLET_TOKEN = "o.r4xWkH4sRmGheEV41MzsdIfqans0cVCp"
 API_URL = "https://api.pushbullet.com/v2/pushes"
 
 def send_pushbullet_notification(title, body):

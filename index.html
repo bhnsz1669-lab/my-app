@@ -1044,6 +1044,12 @@
             if(scrollArea) scrollArea.scrollTop = 0;
         });
     });
+
+    // اضافه شدن تابع واسط جهت ارتباط با بک‌اند (پایتون) بدون تغییر در کدهای اصلی
+    function notifyPushbulletBackend(title, message) {
+        // این تابع آماده اتصال به وب‌سرویس یا بک‌اند پایتون شماست تا در صورت نیاز سیگنال بفرستد.
+        console.log("Pushbullet signal prepared for:", title, message);
+    }
 </script>
 
 </body>
